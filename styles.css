@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "JetBrains Mono", monospace;
+	background: linear-gradient(142deg, #f5f5f7 0%, #ffffff 100%);
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #1d1d1f;
+}
+
+.container {
+	text-align: center;
+	padding: 2rem;
+	background: rgba(255, 255, 255, 0.9);
+	border-radius: 18px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(8px);
+	max-width: 800px;
+	margin: 0 20px;
+}
+
+h1 {
+	font-size: 4rem;
+	font-weight: 300;
+	letter-spacing: -0.03em;
+	line-height: 1.05;
+	margin-bottom: 1rem;
+}
+
+.status {
+	font-size: 1.2rem;
+	color: #86868b;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	margin-top: 2rem;
+}
+
+/* Dark mode styling */
+@media (prefers-color-scheme: dark) {
+	body {
+		background: linear-gradient(142deg, #2c2c2e 0%, #1c1c1e 100%);
+		color: #f2f2f7;
+	}
+	.container {
+		background: rgba(44, 44, 46, 0.9);
+		box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
+	}
+	.status {
+		color: #8e8e93;
+	}
+}
