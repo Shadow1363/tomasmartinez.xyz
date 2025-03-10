@@ -1,0 +1,95 @@
+{
+  "languages": {
+    "en": {
+      "name": "English",
+      "icon": "sg",
+      "content": {
+        "nav": {
+          "home": "Home",
+          "about": "About",
+          "projects": "Projects",
+          "contact": "Contact"
+        },
+        "hero": {
+          "subtitle": "Software Engineer & Developer",
+          "cta": "View My Work"
+        },
+        "about": {
+          "title": "About Me",
+          "text": ["To write", "To write more"],
+          "skills": "Skills"
+        },
+        "projects": {
+          "title": "My Projects"
+        },
+        "contact": {
+          "title": "Get In Touch",
+          "text": "Feel free to reach out if you'd like to work together or just say hello!",
+          "cta": "Email Me"
+        },
+        "footer": "© 2025 Tomas Martinez. All rights reserved."
+      }
+    },
+    "es": {
+      "name": "Español",
+      "icon": "es",
+      "content": {
+        "nav": {
+          "home": "Inicio",
+          "about": "Sobre Mí",
+          "projects": "Proyectos",
+          "contact": "Contacto"
+        },
+        "hero": {
+          "subtitle": "Ingeniero de Software & Desarrollador",
+          "cta": "Ver Mi Trabajo"
+        },
+        "about": {
+          "title": "Sobre Mí",
+          "text": ["To write", "To write more"],
+          "skills": "Habilidades"
+        },
+        "projects": {
+          "title": "Mis Proyectos"
+        },
+        "contact": {
+          "title": "Contáctame",
+          "text": "¡No dudes en contactarme si deseas trabajar juntos o simplemente saludar!",
+          "cta": "Envíame un Email"
+        },
+        "footer": "© 2025 Tomás Martínez. Todos los derechos reservados."
+      }
+    },
+    "pt": {
+      "name": "Português",
+      "icon": "pt",
+      "content": {
+        "nav": {
+          "home": "Início",
+          "about": "Sobre",
+          "projects": "Projetos",
+          "contact": "Contato"
+        },
+        "hero": {
+          "subtitle": "Engenheiro de Software & Desenvolvedor",
+          "cta": "Ver Meu Trabalho"
+        },
+        "about": {
+          "title": "Sobre Mim",
+          "text": ["To write", "To write more"],
+          "skills": "Habilidades"
+        },
+        "projects": {
+          "title": "Meus Projetos"
+        },
+        "contact": {
+          "title": "Entre em Contato",
+          "text": "Sinta-se à vontade para entrar em contato se quiser trabalhar junto ou apenas dizer olá!",
+          "cta": "Me Envie um Email"
+        },
+        "footer": "© 2025 Tomás Martinez. Todos os direitos reservados."
+      }
+    }
+  },
+  "defaultLanguage": "en"
+}

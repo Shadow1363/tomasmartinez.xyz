@@ -3,11 +3,294 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="favicon.png" type="image/png" />
-    <title>Coming Soon...</title>
+    <title>Tomas Martinez</title>
+    <link rel="icon" href="./assets/favicon.png" type="image/png" />
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
   </head>
   <body>
-    <h1>Coming Soon...</h1>
+    <nav>
+      <div class="logo">
+        <img src="./assets/favicon.png" style="height: 24px; width: 24px" />
+      </div>
+      <div class="nav-links">
+        <button data-section="home" class="nav-link" data-i18n="nav.home">
+          Home
+        </button>
+        <button data-section="about" class="nav-link" data-i18n="nav.about">
+          About
+        </button>
+        <button
+          data-section="projects"
+          class="nav-link"
+          data-i18n="nav.projects"
+        >
+          Projects
+        </button>
+      </button>
+      <button
+        onclick="window.location.href='https://blog.tomasmartinez.xyz'"
+        class="nav-link"
+        data-i18n="nav.blog"
+      >
+        Blog
+      </button>
+        <button data-section="contact" class="nav-link" data-i18n="nav.contact">
+          Contact
+        </button>
+
+        <div class="lang-selector">
+          <button data-lang="en" class="active-lang">
+            <svg class="flag">
+              <use href="./assets/icons.svg#sg"></use>
+            </svg>
+          </button>
+          <button data-lang="es">
+            <svg class="flag">
+              <use href="./assets/icons.svg#es"></use>
+            </svg>
+          </button>
+          <button data-lang="pt">
+            <svg class="flag">
+              <use href="./assets/icons.svg#pt"></use>
+            </svg>
+          </button>
+        </div>
+
+        <button class="theme-toggle">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </nav>
+
+    <div class="hero" id="home">
+      <div class="pattern"></div>
+
+      <h1>
+        <span>Tomás Martinez</span>
+      </h1>
+      <p data-i18n="hero.subtitle">Software Engineer & Developer</p>
+      <button
+        data-section="projects"
+        class="nav-link cta-button"
+        data-i18n="hero.cta"
+      >
+        View My Work
+      </button>
+    </div>
+
+    <section id="about">
+      <h2 class="section-title" data-i18n="about.title">About Me</h2>
+      <div class="about-content">
+        <div class="about-img">
+          <img src="assets/favicon.png" alt="Tomas Martinez" />
+        </div>
+        <div class="about-text">
+          <p data-i18n="about.text.0">To write</p>
+          <p data-i18n="about.text.1">To write more</p>
+        </div>
+      </div>
+
+      <h3
+        style="
+          text-align: center;
+          margin-top: 80px;
+          margin-bottom: 20px;
+          font-size: 24px;
+        "
+        data-i18n="about.skills"
+      >
+        Skills
+      </h3>
+
+      <!-- New animated skills section -->
+      <div class="skills-container">
+        <!-- First row - moves left -->
+        <div class="skills-row row-1">
+          <!-- Skills repeated to create an infinite loop effect -->
+          <div class="skill-item">
+            <i class="fab fa-js"></i>
+            <p>JavaScript</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-html5"></i>
+            <p>HTML5</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-css3-alt"></i>
+            <p>CSS3</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-react"></i>
+            <p>React</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-node-js"></i>
+            <p>Node.js</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-python"></i>
+            <p>Python</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-git-alt"></i>
+            <p>Git</p>
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-database"></i>
+            <p>SQL</p>
+          </div>
+          <!-- Duplicate for infinite scroll effect -->
+          <div class="skill-item">
+            <i class="fab fa-js"></i>
+            <p>JavaScript</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-html5"></i>
+            <p>HTML5</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-css3-alt"></i>
+            <p>CSS3</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-react"></i>
+            <p>React</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-node-js"></i>
+            <p>Node.js</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-python"></i>
+            <p>Python</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-git-alt"></i>
+            <p>Git</p>
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-database"></i>
+            <p>SQL</p>
+          </div>
+        </div>
+
+        <!-- Second row - moves right -->
+        <div class="skills-row row-2">
+          <div class="skill-item">
+            <i class="fab fa-aws"></i>
+            <p>AWS</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-docker"></i>
+            <p>Docker</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-ts"></i>
+            <p>TypeScript</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-angular"></i>
+            <p>Angular</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-bootstrap"></i>
+            <p>Bootstrap</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-php"></i>
+            <p>PHP</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-java"></i>
+            <p>Java</p>
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-mobile-alt"></i>
+            <p>Mobile Dev</p>
+          </div>
+          <!-- Duplicate for infinite scroll effect -->
+          <div class="skill-item">
+            <i class="fab fa-aws"></i>
+            <p>AWS</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-docker"></i>
+            <p>Docker</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-vuejs"></i>
+            <p>Vue.js</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-angular"></i>
+            <p>Angular</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-bootstrap"></i>
+            <p>Bootstrap</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-php"></i>
+            <p>PHP</p>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-java"></i>
+            <p>Java</p>
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-mobile-alt"></i>
+            <p>Mobile Dev</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title" data-i18n="projects.title">My Projects</h2>
+
+      <div id="projects-container" class="projects-grid">
+        <div class="loader"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="contact-content">
+        <h2 class="section-title" data-i18n="contact.title">Get In Touch</h2>
+        <p data-i18n="contact.text">
+          Feel free to reach out if you'd like to work together or just say
+          hello!
+        </p>
+
+        <a
+          href="mailto:me@tomasmartinez.xyz"
+          class="cta-button"
+          data-i18n="contact.cta"
+        >
+          Email Me
+        </a>
+
+        <div class="social-links">
+          <a href="https://github.com/shadow163" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="https://linkedin.com/in/tomas--martinez" target="_blank"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a href="https://www.imdb.com/name/nm15119198/" target="_blank"
+            ><i class="fab fa-imdb"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p data-i18n="footer">© 2025 Tomas Martinez. All rights reserved.</p>
+    </footer>
+    <script src="settings.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
