@@ -150,6 +150,9 @@ function fetchGitHubProjects() {
 
 			for (const repo of repos) {
 				if (repo.topics.includes("tomas-martinez")) {
+					repo.topics = repo.topics.filter(
+						(topic) => topic !== "tomas-martinez",
+					);
 					const imageUrl = `https://raw.githubusercontent.com/${USERNAME}/${repo.name}/main/cover/cover.webp`;
 
 					let validImage = false;
@@ -294,11 +297,7 @@ function createProjectCard(
 
 	// Project title
 	const title = document.createElement("h3");
-	title.innerHTML = `
-            <span class="en">${name}</span>
-            <span class="es hidden">${name}</span>
-            <span class="pt hidden">${name}</span>
-        `;
+	title.innerHTML = `<span>${name}</span>`;
 
 	// Project stats (stars and forks)
 	const statsDiv = document.createElement("div");
@@ -316,11 +315,7 @@ function createProjectCard(
 
 	// Project description
 	const desc = document.createElement("p");
-	desc.innerHTML = `
-            <span class="en">${description}</span>
-            <span class="es hidden">${description}</span>
-            <span class="pt hidden">${description}</span>
-        `;
+	desc.innerHTML = `<span class="en">${description}</span>`;
 
 	// Project tags
 	const tagsDiv = document.createElement("div");
@@ -341,11 +336,7 @@ function createProjectCard(
 	const githubLink = document.createElement("a");
 	githubLink.href = repoUrl;
 	githubLink.target = "_blank";
-	githubLink.innerHTML = `
-            <span class="en">View Code</span>
-            <span class="es hidden">Ver Código</span>
-            <span class="pt hidden">Ver Código</span>
-        `;
+	githubLink.innerHTML = `<span class="en">View Code</span>`;
 
 	linksDiv.appendChild(githubLink);
 
@@ -354,11 +345,7 @@ function createProjectCard(
 		const demoLink = document.createElement("a");
 		demoLink.href = demoUrl;
 		demoLink.target = "_blank";
-		demoLink.innerHTML = `
-                <span class="en">Live Demo</span>
-                <span class="es hidden">Demo en Vivo</span>
-                <span class="pt hidden">Demo ao Vivo</span>
-            `;
+		demoLink.innerHTML = `<span class="en">Live Demo</span>`;
 		linksDiv.appendChild(demoLink);
 	}
 
