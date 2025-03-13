@@ -10,6 +10,19 @@
 	--pan-duration: 100s;
 }
 
+@font-face {
+	font-family: "Dela Gothic One";
+	src: url("../assets/DelaGothicOne-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Mochiy Pop One";
+	src: url("../assets/MochiyPopOne-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+}
 
 .pattern {
 	background-image: url("assets/pattern-dark.webp");
@@ -38,25 +51,21 @@
 		--pan-duration: 50s;
 	}
 }
-
 @media (max-width: 1200px) {
 	.pattern {
 		--pan-duration: 40s;
 	}
 }
-
 @media (max-width: 768px) {
 	.pattern {
 		--pan-duration: 30s;
 	}
 }
-
 @media (max-width: 480px) {
 	.pattern {
 		--pan-duration: 10s;
 	}
 }
-
 @keyframes pan {
 	0% {
 		background-position: 0% 0%;
@@ -119,6 +128,7 @@ nav {
 .nav-links {
 	display: flex;
 	gap: 30px;
+	width: 540px;
 }
 
 .nav-links button,
@@ -170,7 +180,6 @@ nav {
 .hero h1 {
 	font-size: 56px;
 	font-weight: 700;
-	margin-bottom: 20px;
 	letter-spacing: -1px;
 }
 

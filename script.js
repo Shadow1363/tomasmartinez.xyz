@@ -33,6 +33,7 @@ async function loadLanguageSettings() {
 		updateLanguage(currentLanguage);
 
 		// Set up language selector buttons
+		// biome-ignore lint/complexity/noForEach: Have to test if I can swap, last time didn't work
 		document.querySelectorAll(".lang-selector button").forEach((btn) => {
 			btn.addEventListener("click", () => {
 				const lang = btn.getAttribute("data-lang");
@@ -40,6 +41,7 @@ async function loadLanguageSettings() {
 					updateLanguage(lang);
 
 					// Update active button
+					// biome-ignore lint/complexity/noForEach: Have to test if I can swap, last time didn't work
 					document.querySelectorAll(".lang-selector button").forEach((b) => {
 						b.classList.remove("active-lang");
 					});
@@ -64,6 +66,7 @@ function updateLanguage(lang) {
 	const langData = languageSettings.languages[lang].content;
 
 	// Update all elements with data-i18n attribute
+	// biome-ignore lint/complexity/noForEach: Have to check if I can swap
 	document.querySelectorAll("[data-i18n]").forEach((el) => {
 		const key = el.getAttribute("data-i18n");
 		const text = getNestedProperty(langData, key);
@@ -84,6 +87,15 @@ function getNestedProperty(obj, path) {
 // Initialize language settings when the page loads
 document.addEventListener("DOMContentLoaded", getUserLanguageFromBrowser);
 document.addEventListener("DOMContentLoaded", loadLanguageSettings);
+// Randomly Select Japanese Subtitle Font
+document.addEventListener("DOMContentLoaded", () => {
+	const fonts = ["Dela Gothic One", "Mochiy Pop One", "Segoe UI"];
+	const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
+	document.getElementById("subtitle").style.fontFamily =
+		`"${randomFont}", sans-serif`;
+});
+
+// Handle Light and Dark Mode
 document.addEventListener("DOMContentLoaded", () => {
 	// Theme toggling
 	const themeToggle = document.querySelector(".theme-toggle");
@@ -142,7 +154,6 @@ function fetchGitHubProjects() {
 		})
 		.then(async (repos) => {
 			projectsContainer.innerHTML = "";
-
 			if (repos.length === 0) {
 				addSampleProjects();
 				return;
@@ -251,7 +262,7 @@ function addSampleProjects() {
 			project.topics,
 			"#",
 			null,
-			`https://raw.githubusercontent.com/${USERNAME}/${project.name}/main/cover/cover.webp`,
+			project.icon,
 			project.stars,
 			project.forks,
 		);

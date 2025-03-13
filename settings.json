@@ -11,12 +11,14 @@
           "contact": "Contact"
         },
         "hero": {
-          "subtitle": "Software Engineer & Developer",
           "cta": "View My Work"
         },
         "about": {
           "title": "About Me",
-          "text": ["To write", "To write more"],
+          "text": [
+            "Hey I'm Tom! A Software Engineer Junior. Currently working at Inbot! I have more experience with backend but i'm always learning.",
+            "In my free time, I play chess, guitar, or work on one of my projects (Check out my blog!)"
+          ],
           "skills": "Skills"
         },
         "projects": {
@@ -41,7 +43,6 @@
           "contact": "Contacto"
         },
         "hero": {
-          "subtitle": "Ingeniero de Software & Desarrollador",
           "cta": "Ver Mi Trabajo"
         },
         "about": {
@@ -71,7 +72,6 @@
           "contact": "Contato"
         },
         "hero": {
-          "subtitle": "Engenheiro de Software & Desenvolvedor",
           "cta": "Ver Meu Trabalho"
         },
         "about": {
