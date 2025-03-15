@@ -1,146 +1,3 @@
-const USERNAME = "shadow1363";
-let languageSettings = {};
-let currentLanguage = "en";
-const supportedLanguages = ["en", "pt", "es"];
-
-// Method 1: Get language from browser settings
-function getUserLanguageFromBrowser() {
-	const browserLang = navigator.language || navigator.userLanguage;
-
-	const detectedLang = browserLang.split("-")[0];
-
-	if (supportedLanguages.includes(detectedLang)) {
-		currentLanguage = detectedLang;
-	} else {
-		currentLanguage = "en";
-	}
-
-	console.log(`Language set to: ${currentLanguage}`);
-	return currentLanguage;
-}
-// Fetch the language settings from settings.json
-async function loadLanguageSettings() {
-	try {
-		const response = await fetch("settings.json");
-		if (!response.ok) {
-			throw new Error("Failed to load language settings");
-		}
-
-		languageSettings = await response.json();
-
-		// Set default language
-		currentLanguage = languageSettings.defaultLanguage || "en";
-		updateLanguage(currentLanguage);
-
-		// Set up language selector buttons
-		// biome-ignore lint/complexity/noForEach: Have to test if I can swap, last time didn't work
-		document.querySelectorAll(".lang-selector button").forEach((btn) => {
-			btn.addEventListener("click", () => {
-				const lang = btn.getAttribute("data-lang");
-				if (lang) {
-					updateLanguage(lang);
-
-					// Update active button
-					// biome-ignore lint/complexity/noForEach: Have to test if I can swap, last time didn't work
-					document.querySelectorAll(".lang-selector button").forEach((b) => {
-						b.classList.remove("active-lang");
-					});
-					btn.classList.add("active-lang");
-				}
-			});
-		});
-	} catch (error) {
-		console.error("Error loading language settings:", error);
-	}
-}
-
-// Update text content based on selected language
-function updateLanguage(lang) {
-	currentLanguage = lang;
-
-	if (!languageSettings.languages || !languageSettings.languages[lang]) {
-		console.error(`Language ${lang} not found in settings`);
-		return;
-	}
-
-	const langData = languageSettings.languages[lang].content;
-
-	// Update all elements with data-i18n attribute
-	// biome-ignore lint/complexity/noForEach: Have to check if I can swap
-	document.querySelectorAll("[data-i18n]").forEach((el) => {
-		const key = el.getAttribute("data-i18n");
-		const text = getNestedProperty(langData, key);
-
-		if (text !== undefined) {
-			el.textContent = text;
-		}
-	});
-}
-
-// Helper function to get nested properties from an object using dot notation
-function getNestedProperty(obj, path) {
-	return path.split(".").reduce((prev, curr) => {
-		return prev ? prev[curr] : undefined;
-	}, obj);
-}
-
-// Initialize language settings when the page loads
-document.addEventListener("DOMContentLoaded", getUserLanguageFromBrowser);
-document.addEventListener("DOMContentLoaded", loadLanguageSettings);
-// Randomly Select Japanese Subtitle Font
-document.addEventListener("DOMContentLoaded", () => {
-	const fonts = ["Dela Gothic One", "Mochiy Pop One", "Segoe UI"];
-	const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
-	document.getElementById("subtitle").style.fontFamily =
-		`"${randomFont}", sans-serif`;
-});
-
-// Handle Light and Dark Mode
-document.addEventListener("DOMContentLoaded", () => {
-	// Theme toggling
-	const themeToggle = document.querySelector(".theme-toggle");
-	const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-	const pattern = document.querySelector(".pattern");
-
-	// Set initial theme based on system preference
-	if (prefersDarkScheme.matches) {
-		document.body.setAttribute("data-theme", "dark");
-		pattern.style.backgroundImage = `url("assets/pattern-light.webp")`;
-		themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-	}
-
-	themeToggle.addEventListener("click", () => {
-		if (document.body.getAttribute("data-theme") === "dark") {
-			pattern.style.backgroundImage = `url("assets/pattern-dark.webp")`;
-			document.body.removeAttribute("data-theme");
-			themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-		} else {
-			pattern.style.backgroundImage = `url("assets/pattern-light.webp")`;
-			document.body.setAttribute("data-theme", "dark");
-			themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-		}
-	});
-
-	// Smooth scrolling for navigation
-	const navLinks = document.querySelectorAll(".nav-link");
-
-	for (const link of navLinks) {
-		link.addEventListener("click", function (e) {
-			e.preventDefault();
-			const targetId = this.getAttribute("data-section");
-			const targetSection = document.getElementById(targetId);
-
-			window.scrollTo({
-				top: targetSection.offsetTop - 80,
-				behavior: "smooth",
-			});
-		});
-	}
-
-	// GitHub API integration
-	fetchGitHubProjects();
-});
-
 function fetchGitHubProjects() {
 	const projectsContainer = document.getElementById("projects-container");
 
@@ -371,4 +228,148 @@ function createProjectCard(
 	card.appendChild(contentDiv);
 
 	return card;
+}
+
+function getUserLanguageFromBrowser() {
+	const browserLang = navigator.language || navigator.userLanguage;
+
+	const detectedLang = browserLang.split("-")[0];
+
+	if (supportedLanguages.includes(detectedLang)) {
+		currentLanguage = detectedLang;
+	} else {
+		currentLanguage = "en";
+	}
+
+	console.log(`Language set to: ${currentLanguage}`);
+	return currentLanguage;
+}
+
+// Fetch the language settings from settings.json
+async function loadLanguageSettings() {
+	try {
+		const response = await fetch("settings.json");
+		if (!response.ok) {
+			throw new Error("Failed to load language settings");
+		}
+
+		languageSettings = await response.json();
+
+		// Set default language
+		currentLanguage = languageSettings.defaultLanguage || "en";
+		updateLanguage(currentLanguage);
+
+		// Set up language selector buttons
+		// biome-ignore lint/complexity/noForEach: Have to test if I can swap, last time didn't work
+		document.querySelectorAll(".lang-selector button").forEach((btn) => {
+			btn.addEventListener("click", () => {
+				const lang = btn.getAttribute("data-lang");
+				if (lang) {
+					updateLanguage(lang);
+
+					// Update active button
+					// biome-ignore lint/complexity/noForEach: Have to test if I can swap, last time didn't work
+					document.querySelectorAll(".lang-selector button").forEach((b) => {
+						b.classList.remove("active-lang");
+					});
+					btn.classList.add("active-lang");
+				}
+			});
+		});
+	} catch (error) {
+		console.error("Error loading language settings:", error);
+	}
+}
+
+// Update text content based on selected language
+function updateLanguage(lang) {
+	currentLanguage = lang;
+
+	if (!languageSettings.languages || !languageSettings.languages[lang]) {
+		console.error(`Language ${lang} not found in settings`);
+		return;
+	}
+
+	const langData = languageSettings.languages[lang].content;
+
+	// Update all elements with data-i18n attribute
+	// biome-ignore lint/complexity/noForEach: Have to check if I can swap
+	document.querySelectorAll("[data-i18n]").forEach((el) => {
+		const key = el.getAttribute("data-i18n");
+		const text = getNestedProperty(langData, key);
+
+		if (text !== undefined) {
+			el.textContent = text;
+		}
+	});
+}
+
+// Helper function to get nested properties from an object using dot notation
+function getNestedProperty(obj, path) {
+	return path.split(".").reduce((prev, curr) => {
+		return prev ? prev[curr] : undefined;
+	}, obj);
+}
+
+function fetchRSSFeed() {
+	const blogPostsContainer = document.getElementById("blog-posts");
+
+	fetch(
+		"https://corsproxy.io/?url=https://blog.tomasmartinez.xyz/feed_json_created.json",
+	)
+		.then((response) => response.text())
+		.then((data) => {
+			try {
+				const blog = JSON.parse(data);
+				blogPostsContainer.innerHTML = "";
+
+				if (blog.items.length === 0) {
+					if (blogPostsContainer) {
+						blogPostsContainer.remove();
+					}
+				}
+
+				blogPostsContainer.innerHTML = `<h2 class="blog-title"><span>Latest Posts</span></h2>`;
+				// Create cards for each post
+				for (const post of blog.items.slice(-2)) {
+					// Format the date using the "date_published" property
+					const date = new Date(post.date_published);
+					const formattedDate = date.toLocaleDateString();
+
+					// Extract plain text from the HTML description (if needed)
+					const tempDiv = document.createElement("div");
+					tempDiv.innerHTML = post.content_html;
+					const description = tempDiv.textContent || tempDiv.innerText || "";
+
+					// Create card HTML with updated properties:
+					const cardHTML = `
+					  <div class="card">
+						<div class="card-content">
+						  <h2 class="card-title">${post.title}</h2>
+						  <span class="card-date">${formattedDate}</span>
+						  <p class="card-description">${description}</p>
+						  <a href="${post.url}" class="card-link" target="_blank">Read More</a>
+						  <p class="card-author">By ${post.authors[0].name}</p>
+						</div>
+					  </div>
+					`;
+
+					// Add card to container
+					blogPostsContainer.innerHTML += cardHTML;
+				}
+
+				console.log("Blog posts displayed successfully");
+			} catch (error) {
+				console.error("Error in displayBlogPosts:", error);
+				if (blogPostsContainer) {
+					blogPostsContainer.remove(); // Remove the element from the DOM
+				}
+			}
+		})
+		.catch((error) => {
+			console.error("Error fetching RSS feed:", error);
+			if (blogPostsContainer) {
+				blogPostsContainer.remove(); // Remove the element from the DOM
+			}
+		});
 }

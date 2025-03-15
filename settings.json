@@ -47,7 +47,10 @@
         },
         "about": {
           "title": "Sobre Mí",
-          "text": ["To write", "To write more"],
+          "text": [
+            "¡Hola, soy Tom! Un Ingeniero de Software Junior. Actualmente trabajo en Inbot. Tengo más experiencia en backend, pero siempre estoy aprendiendo.",
+            "En mi tiempo libre, juego al ajedrez, toco la guitarra o trabajo en alguno de mis proyectos (¡Echa un vistazo a mi blog!)"
+          ],
           "skills": "Habilidades"
         },
         "projects": {
@@ -76,7 +79,10 @@
         },
         "about": {
           "title": "Sobre Mim",
-          "text": ["To write", "To write more"],
+          "text": [
+            "Olá, sou Tom! Um Engenheiro de Software Júnior. Atualmente trabalho na Inbot. Tenho mais experiência com backend, mas estou sempre aprendendo.",
+            "No meu tempo livre, jogo xadrez, toco guitarra elétrica ou trabalho em um dos meus projetos (Confira meu blog!)"
+          ],
           "skills": "Habilidades"
         },
         "projects": {

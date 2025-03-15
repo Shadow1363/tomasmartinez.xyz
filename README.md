@@ -10,14 +10,15 @@ A simple HTMl, CSS & JS website.
 
 ## Todos
 
-- Move SVG's to `/assets/icons.svg`
+- Move SVG's to `/assets/icons.svg` (No font awesome)
 - Fix Cover Images on My Projects
 
 ## Upcoming
 
 - Pico8 Game Support
-- Custom API integrations
+- Custom API integrations (Have to code backend)
 - Google Lighthouse Optimizations
 - Font Update?
 - My own favicon (Applies for https://blog.tomasmartinez.xyz too)
 - Blog Integration (Pull X Latests Posts)
+- 
