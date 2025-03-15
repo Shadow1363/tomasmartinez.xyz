@@ -204,7 +204,7 @@ function createProjectCard(
 	const githubLink = document.createElement("a");
 	githubLink.href = repoUrl;
 	githubLink.target = "_blank";
-	githubLink.innerHTML = `<span class="en">View Code</span>`;
+	githubLink.innerHTML = `<span><i class="fa-solid fa-code"></i></span>`;
 
 	linksDiv.appendChild(githubLink);
 
@@ -213,7 +213,7 @@ function createProjectCard(
 		const demoLink = document.createElement("a");
 		demoLink.href = demoUrl;
 		demoLink.target = "_blank";
-		demoLink.innerHTML = `<span class="en">Live Demo</span>`;
+		demoLink.innerHTML = `<span><i class="fa-solid fa-eye"></i></span>`;
 		linksDiv.appendChild(demoLink);
 	}
 
