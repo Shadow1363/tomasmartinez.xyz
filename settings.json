@@ -1,0 +1,101 @@
+{
+  "languages": {
+    "en": {
+      "name": "English",
+      "icon": "sg",
+      "content": {
+        "nav": {
+          "home": "Home",
+          "about": "About",
+          "projects": "Projects",
+          "contact": "Contact"
+        },
+        "hero": {
+          "cta": "View My Work"
+        },
+        "about": {
+          "title": "About Me",
+          "text": [
+            "Hey I'm Tom! A Software Engineer Junior. Currently working at Inbot! I have more experience with backend but i'm always learning.",
+            "In my free time, I play chess, guitar, or work on one of my projects (Check out my blog!)"
+          ],
+          "skills": "Skills"
+        },
+        "projects": {
+          "title": "My Projects"
+        },
+        "contact": {
+          "title": "Get In Touch",
+          "text": "Feel free to reach out if you'd like to work together or just say hello!",
+          "cta": "Email Me"
+        },
+        "footer": "© 2025 Tomas Martinez. All rights reserved."
+      }
+    },
+    "es": {
+      "name": "Español",
+      "icon": "es",
+      "content": {
+        "nav": {
+          "home": "Inicio",
+          "about": "Sobre Mí",
+          "projects": "Proyectos",
+          "contact": "Contacto"
+        },
+        "hero": {
+          "cta": "Ver Mi Trabajo"
+        },
+        "about": {
+          "title": "Sobre Mí",
+          "text": [
+            "¡Hola, soy Tom! Un Ingeniero de Software Junior. Actualmente trabajo en Inbot. Tengo más experiencia en backend, pero siempre estoy aprendiendo.",
+            "En mi tiempo libre, juego al ajedrez, toco la guitarra o trabajo en alguno de mis proyectos (¡Echa un vistazo a mi blog!)"
+          ],
+          "skills": "Habilidades"
+        },
+        "projects": {
+          "title": "Mis Proyectos"
+        },
+        "contact": {
+          "title": "Contáctame",
+          "text": "¡No dudes en contactarme si deseas trabajar juntos o simplemente saludar!",
+          "cta": "Envíame un Email"
+        },
+        "footer": "© 2025 Tomás Martínez. Todos los derechos reservados."
+      }
+    },
+    "pt": {
+      "name": "Português",
+      "icon": "pt",
+      "content": {
+        "nav": {
+          "home": "Início",
+          "about": "Sobre",
+          "projects": "Projetos",
+          "contact": "Contato"
+        },
+        "hero": {
+          "cta": "Ver Meu Trabalho"
+        },
+        "about": {
+          "title": "Sobre Mim",
+          "text": [
+            "Olá, sou Tom! Um Engenheiro de Software Júnior. Atualmente trabalho na Inbot. Tenho mais experiência com backend, mas estou sempre aprendendo.",
+            "No meu tempo livre, jogo xadrez, toco guitarra elétrica ou trabalho em um dos meus projetos (Confira meu blog!)"
+          ],
+          "skills": "Habilidades"
+        },
+        "projects": {
+          "title": "Meus Projetos"
+        },
+        "contact": {
+          "title": "Entre em Contato",
+          "text": "Sinta-se à vontade para entrar em contato se quiser trabalhar junto ou apenas dizer olá!",
+          "cta": "Me Envie um Email"
+        },
+        "footer": "© 2025 Tomás Martinez. Todos os direitos reservados."
+      }
+    }
+  },
+  "defaultLanguage": "en"
+}
