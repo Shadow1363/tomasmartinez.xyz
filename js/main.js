@@ -7,7 +7,7 @@ let currentLanguage = "en";
 
 // Initialize language settings when the page loads
 document.addEventListener("DOMContentLoaded", getUserLanguageFromBrowser);
-document.addEventListener("DOMContentLoaded", fetchRSSFeed);
+document.addEventListener("DOMContentLoaded", fetchJSONFeed);
 document.addEventListener("DOMContentLoaded", loadLanguageSettings);
 
 // Handle Light and Dark Mode

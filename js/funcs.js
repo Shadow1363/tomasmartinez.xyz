@@ -134,7 +134,7 @@ function createProjectCard(
 	topics,
 	repoUrl,
 	demoUrl,
-	iconClass = "fa-code",
+	iconClass,
 	stars = 0,
 	forks = 0,
 ) {
@@ -315,7 +315,7 @@ function getNestedProperty(obj, path) {
 	}, obj);
 }
 
-function fetchRSSFeed() {
+function fetchJSONFeed() {
 	const blogPostsContainer = document.getElementById("blog-posts");
 
 	fetch(
@@ -352,7 +352,7 @@ function fetchRSSFeed() {
 						  <h2 class="card-title">${post.title}</h2>
 						  <span class="card-date">${formattedDate}</span>
 						  <p class="card-description">${description}</p>
-						  <a href="${post.url}" class="card-link" target="_blank">Read More</a>
+						  <a href="${post.url}" data-i18n="about.blog" class="card-link" target="_blank">Read More</a>
 						  <p class="card-author">By ${post.authors[0].name}</p>
 						</div>
 					  </div>

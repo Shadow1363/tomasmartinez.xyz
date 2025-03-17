@@ -19,7 +19,8 @@
             "Hey I'm Tom! A Software Engineer Junior. Currently working at Inbot! I have more experience with backend but i'm always learning.",
             "In my free time, I play chess, guitar, or work on one of my projects (Check out my blog!)"
           ],
-          "skills": "Skills"
+          "skills": "Skills",
+          "blog": "Read more"
         },
         "projects": {
           "title": "My Projects"
@@ -51,7 +52,8 @@
             "¡Hola, soy Tom! Un Ingeniero de Software Junior. Actualmente trabajo en Inbot. Tengo más experiencia en backend, pero siempre estoy aprendiendo.",
             "En mi tiempo libre, juego al ajedrez, toco la guitarra o trabajo en alguno de mis proyectos (¡Echa un vistazo a mi blog!)"
           ],
-          "skills": "Habilidades"
+          "skills": "Habilidades",
+          "blog": "Leer más"
         },
         "projects": {
           "title": "Mis Proyectos"
@@ -83,7 +85,8 @@
             "Olá, sou Tom! Um Engenheiro de Software Júnior. Atualmente trabalho na Inbot. Tenho mais experiência com backend, mas estou sempre aprendendo.",
             "No meu tempo livre, jogo xadrez, toco guitarra elétrica ou trabalho em um dos meus projetos (Confira meu blog!)"
           ],
-          "skills": "Habilidades"
+          "skills": "Habilidades",
+          "blog": "Leia mais"
         },
         "projects": {
           "title": "Meus Projetos"
