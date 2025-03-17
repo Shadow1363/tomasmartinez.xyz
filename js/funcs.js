@@ -204,6 +204,7 @@ function createProjectCard(
 
 	// GitHub link
 	const githubLink = document.createElement("a");
+	githubLink["aria-label"] = `${name}'s Code`;
 	githubLink.href = repoUrl;
 	githubLink.target = "_blank";
 	githubLink.innerHTML = `<span><svg class="icon"><use href="./assets/icons.svg#code"></use></svg></span>`;
@@ -213,6 +214,7 @@ function createProjectCard(
 	// Demo link if available
 	if (demoUrl) {
 		const demoLink = document.createElement("a");
+		demoLink["aria-label"] = `Visit ${name}`;
 		demoLink.href = demoUrl;
 		demoLink.target = "_blank";
 		demoLink.innerHTML = `<span><svg class="icon"><use href="./assets/icons.svg#eye"></use></svg></span>`;

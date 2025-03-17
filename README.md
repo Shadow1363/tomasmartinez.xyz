@@ -11,6 +11,7 @@ A simple HTMl, CSS & JS website.
 ## Todos
 
 ~~- Move SVG's to `/assets/icons.svg` (No font awesome)~~
+
 - Fix Cover Images on My Projects
 - Use Webp
 - Vite it with TS
@@ -24,4 +25,8 @@ A simple HTMl, CSS & JS website.
 - Font Update?
 - My own favicon (Applies for https://blog.tomasmartinez.xyz too)
 - Blog Integration (Pull X Latests Posts)
-- 
+-
+
+# Credits
+
+- https://lucide.dev/icons

@@ -11,6 +11,7 @@
     <nav>
       <div class="logo">
         <img
+          alt="</>"
           src="./assets/favicon.png"
           style="
             height: 24px;
@@ -47,6 +48,7 @@
 
         <div class="lang-selector">
           <button
+            aria-label="English"
             data-lang="en"
             class="active-lang"
             style="display: grid; align-content: center"
@@ -55,19 +57,27 @@
               <use href="./assets/icons.svg#sg"></use>
             </svg>
           </button>
-          <button data-lang="es" style="display: grid; align-content: center">
+          <button
+            aria-label="Spanish"
+            data-lang="es"
+            style="display: grid; align-content: center"
+          >
             <svg class="flag">
               <use href="./assets/icons.svg#es"></use>
             </svg>
           </button>
-          <button data-lang="pt" style="display: grid; align-content: center">
+          <button
+            aria-label="Portuguese"
+            data-lang="pt"
+            style="display: grid; align-content: center"
+          >
             <svg class="flag">
               <use href="./assets/icons.svg#pt"></use>
             </svg>
           </button>
         </div>
 
-        <button class="theme-toggle">
+        <button aria-label="Toggle Light/Dark mode" class="theme-toggle">
           <svg class="icon">
             <use href="./assets/icons.svg#moon"></use>
           </svg>
@@ -874,15 +884,26 @@
         </a>
 
         <div class="social-links">
-          <a href="https://github.com/shadow163" target="_blank">
+          <a
+            aria-label="Github"
+            href="https://github.com/shadow163"
+            target="_blank"
+          >
             <svg class="icon">
               <use href="./assets/icons.svg#github"></use></svg
           ></a>
-          <a href="https://linkedin.com/in/tomas--martinez" target="_blank">
+          <a
+            aria-label="Linkedin"
+            href="https://linkedin.com/in/tomas--martinez"
+            target="_blank"
+          >
             <svg class="icon">
               <use href="./assets/icons.svg#linkedin"></use></svg
           ></a>
-          <!-- <a href="https://www.imdb.com/name/nm15119198/" target="_blank"
+          <!-- <a
+            aria-label="IMDB"
+            href="https://www.imdb.com/name/nm15119198/"
+            target="_blank"
             ><i class="fab fa-imdb"></i
           ></a> -->
         </div>
