@@ -525,7 +525,7 @@ footer {
 	font-size: 14px;
 }
 
-.stat i {
+.stat svg {
 	color: var(--accent-color);
 }
 
@@ -614,7 +614,8 @@ footer {
 	}
 }
 
-.flag {
+.flag,
+.icon {
 	transition: transform 0.3s ease, opacity 0.3s ease;
 	width: 24px;
 	height: 24px;

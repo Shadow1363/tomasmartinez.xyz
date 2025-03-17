@@ -10,14 +10,6 @@ document.addEventListener("DOMContentLoaded", getUserLanguageFromBrowser);
 document.addEventListener("DOMContentLoaded", fetchRSSFeed);
 document.addEventListener("DOMContentLoaded", loadLanguageSettings);
 
-// Randomly Select Japanese Subtitle Font
-document.addEventListener("DOMContentLoaded", () => {
-	const fonts = ["Dela Gothic One", "Mochiy Pop One", "Segoe UI"];
-	const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
-	document.getElementById("subtitle").style.fontFamily =
-		`"${randomFont}", sans-serif`;
-});
-
 // Handle Light and Dark Mode
 document.addEventListener("DOMContentLoaded", () => {
 	// Theme toggling
@@ -31,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		document.body.setAttribute("data-theme", "dark");
 		profile.src = "assets/darkmode.png";
 		pattern.style.backgroundImage = `url("assets/pattern-light.webp")`;
-		themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+		themeToggle.innerHTML =
+			'<svg class="icon"><use href="./assets/icons.svg#sun"></use></svg>';
 	}
 
 	themeToggle.addEventListener("click", () => {
@@ -39,11 +32,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			pattern.style.backgroundImage = `url("assets/pattern-dark.webp")`;
 			profile.src = "assets/lightmode.png";
 			document.body.removeAttribute("data-theme");
-			themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+			themeToggle.innerHTML =
+				'<svg class="icon"><use href="./assets/icons.svg#moon"></use></svg>';
 		} else {
 			pattern.style.backgroundImage = `url("assets/pattern-light.webp")`;
 			document.body.setAttribute("data-theme", "dark");
-			themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+			themeToggle.innerHTML =
+				'<svg class="icon"><use href="./assets/icons.svg#sun"></use></svg>';
 			profile.src = "assets/darkmode.png";
 		}
 	});

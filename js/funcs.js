@@ -151,8 +151,6 @@ function createProjectCard(
 		image.src = iconClass;
 		image.alt = `${name} Image`;
 		imageDiv.appendChild(image); // Append the image element
-	} else {
-		imageDiv.innerHTML = `<i class="fas ${iconClass}"></i>`; // Insert the icon as HTML
 	}
 
 	// Project content
@@ -172,11 +170,15 @@ function createProjectCard(
 	statsDiv.className = "project-stats";
 	statsDiv.innerHTML = `
 		<div class="stat">
-			<i class="fas fa-star"></i>
+			<svg class="icon">
+              <use href="./assets/icons.svg#star"></use>
+            </svg>
 			<span>${stars}</span>
 		</div>
 		<div class="stat">
-			<i class="fas fa-code-branch"></i>
+			<svg class="icon">
+              <use href="./assets/icons.svg#branch"></use>
+            </svg>
 			<span>${forks}</span>
 		</div>
 	`;
@@ -204,7 +206,7 @@ function createProjectCard(
 	const githubLink = document.createElement("a");
 	githubLink.href = repoUrl;
 	githubLink.target = "_blank";
-	githubLink.innerHTML = `<span><i class="fa-solid fa-code"></i></span>`;
+	githubLink.innerHTML = `<span><svg class="icon"><use href="./assets/icons.svg#code"></use></svg></span>`;
 
 	linksDiv.appendChild(githubLink);
 
@@ -213,7 +215,7 @@ function createProjectCard(
 		const demoLink = document.createElement("a");
 		demoLink.href = demoUrl;
 		demoLink.target = "_blank";
-		demoLink.innerHTML = `<span><i class="fa-solid fa-eye"></i></span>`;
+		demoLink.innerHTML = `<span><svg class="icon"><use href="./assets/icons.svg#eye"></use></svg></span>`;
 		linksDiv.appendChild(demoLink);
 	}
 
