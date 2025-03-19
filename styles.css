@@ -92,7 +92,6 @@ nav {
 .nav-links {
 	display: flex;
 	gap: 30px;
-	width: 540px;
 }
 
 .nav-links button,
