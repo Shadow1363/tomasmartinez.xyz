@@ -233,6 +233,23 @@ section {
 	opacity: 0.8;
 }
 
+.card-author {
+	font-size: 12px;
+}
+
+.card-link-wrapper {
+	text-decoration: none;
+	color: inherit;
+	display: block;
+}
+.card {
+	cursor: pointer;
+	transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+	transform: scale(1.02);
+}
+
 .contact {
 	background-color: var(--card-bg);
 	border-radius: 12px;
@@ -426,10 +443,8 @@ footer {
 	flex-shrink: 0;
 }
 
-.skill-item i {
-	font-size: 36px;
-	margin-bottom: 12px;
-	color: var(--accent-color);
+.skill-item svg {
+	fill: var(--accent-color);
 }
 
 /* =============================================================================
@@ -612,6 +627,9 @@ footer {
 	100% {
 		transform: rotate(360deg);
 	}
+}
+.icon {
+	fill: white;
 }
 
 .flag,

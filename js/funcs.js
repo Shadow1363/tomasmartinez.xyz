@@ -347,16 +347,17 @@ function fetchJSONFeed() {
 
 					// Create card HTML with updated properties:
 					const cardHTML = `
+					<a href="${post.url}" target="_blank" class="card-link-wrapper">
 					  <div class="card">
 						<div class="card-content">
 						  <h2 class="card-title">${post.title}</h2>
 						  <span class="card-date">${formattedDate}</span>
 						  <p class="card-description">${description}</p>
-						  <a href="${post.url}" data-i18n="about.blog" class="card-link" target="_blank">Read More</a>
 						  <p class="card-author">By ${post.authors[0].name}</p>
 						</div>
 					  </div>
-					`;
+					</a>
+				  `;
 
 					// Add card to container
 					blogPostsContainer.innerHTML += cardHTML;
