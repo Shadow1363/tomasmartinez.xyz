@@ -17,10 +17,8 @@ function fetchGitHubProjects() {
 			}
 
 			for (const repo of repos) {
-				if (repo.topics.includes("tomas-martinez")) {
-					repo.topics = repo.topics.filter(
-						(topic) => topic !== "tomas-martinez",
-					);
+				if (repo.topics.includes(FILTER_TAG)) {
+					repo.topics = repo.topics.filter((topic) => topic !== FILTER_TAG);
 					const imageUrl = `https://raw.githubusercontent.com/${USERNAME}/${repo.name}/main/cover/cover.webp`;
 
 					let validImage = false;
@@ -53,6 +51,7 @@ function fetchGitHubProjects() {
 		});
 }
 
+// TODO: Replace to be my actual projects
 function addSampleProjects() {
 	const projectsContainer = document.getElementById("projects-container");
 

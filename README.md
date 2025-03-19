@@ -1,32 +1,36 @@
 # Portfolio Website
 
-A simple HTMl, CSS & JS website.
+A one page HTMl, CSS & JS Portfolio website loaded with features.
 
 ## Features
 
-- Trilingual Support
-- Dual Screens Conveyor
+- Trilingual Support (English, Portuguese, Spanish)
+- Interactive Skills Conveyor
 - Github API Support
+- Blog Integration (RSS Json)
+- [Perfect Lighthouse Score](https://pagespeed.web.dev/analysis/https-tomasmartinez-xyz/uawdtgy9rw?form_factor=desktop)
 
 ## Todos
 
-~~- Move SVG's to `/assets/icons.svg` (No font awesome)~~
-
 - Fix Cover Images on My Projects
-- Use Webp
-- Vite it with TS
-- Perfect Score on Lighthouse
+- Replace Sample Projects with real projects of mine
+- Use WEBP on `lightmode.png` & `darkmode.png`
+- ~~Move SVG's to `/assets/icons.svg` (No font awesome)~~
+- ~~Improve PageSpeed~~
+- ~~Blog Integration (Pull X Latests Posts)~~
 
 ## Upcoming
 
-- Pico8 Game Support
+- Move all `.svg` to `icons.svg`
+- Mudkip Easter Egg
+- Pico8 Game Support (Have to make Pico8 Game)
 - Custom API integrations (Have to code backend)
-- Google Lighthouse Optimizations
 - Font Update?
 - My own favicon (Applies for https://blog.tomasmartinez.xyz too)
-- Blog Integration (Pull X Latests Posts)
--
 
 # Credits
 
 - https://lucide.dev/icons
+- https://simpleicons.org/
+- https://claude.ai
+- https://squoosh.app/
