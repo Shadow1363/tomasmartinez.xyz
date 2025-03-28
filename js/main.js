@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 	const pattern = document.querySelector(".pattern");
 	const profile = document.getElementById("profile-image");
+	console.log(prefersDarkScheme);
 
 	// Set initial theme based on system preference
 	if (prefersDarkScheme.matches) {
@@ -26,6 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		pattern.style.backgroundImage = `url("assets/pattern-light.webp")`;
 		themeToggle.innerHTML =
 			'<svg class="icon"><use href="./assets/icons.svg#sun"></use></svg>';
+	} else {
+		pattern.style.backgroundImage = `url("assets/pattern-dark.webp")`;
+		profile.src = "assets/lightmode.png";
+		document.body.removeAttribute("data-theme");
+		themeToggle.innerHTML =
+			'<svg class="icon"><use href="./assets/icons.svg#moon"></use></svg>';
 	}
 
 	themeToggle.addEventListener("click", () => {
