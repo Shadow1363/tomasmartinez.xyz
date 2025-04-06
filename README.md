@@ -7,14 +7,14 @@ A one page HTMl, CSS & JS Portfolio website loaded with features.
 - Trilingual Support (English, Portuguese, Spanish)
 - Interactive Skills Conveyor
 - Github API Support
-- Blog Integration (RSS Json)
+- Blog Integration (RSS w Json)
 - [Perfect Lighthouse Score](https://pagespeed.web.dev/analysis/https-tomasmartinez-xyz/uawdtgy9rw?form_factor=desktop)
 
 ## Todos
 
 - Fix Cover Images on My Projects
-- Replace Sample Projects with real projects of mine
-- Use WEBP on `lightmode.png` & `darkmode.png`
+- ~~Replace Sample Projects with real projects of mine~~
+- ~~Use WEBP on `lightmode.png` & `darkmode.png`~~
 - ~~Move SVG's to `/assets/icons.svg` (No font awesome)~~
 - ~~Improve PageSpeed~~
 - ~~Blog Integration (Pull X Latests Posts)~~
@@ -27,6 +27,7 @@ A one page HTMl, CSS & JS Portfolio website loaded with features.
 - Custom API integrations (Have to code backend)
 - Font Update?
 - My own favicon (Applies for https://blog.tomasmartinez.xyz too)
+- Vite it?
 
 # Credits
 

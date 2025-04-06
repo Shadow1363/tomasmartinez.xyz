@@ -23,13 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Set initial theme based on system preference
 	if (prefersDarkScheme.matches) {
 		document.body.setAttribute("data-theme", "dark");
-		profile.src = "assets/darkmode.png";
+		profile.src = "assets/darkmode.webp";
 		pattern.style.backgroundImage = `url("assets/pattern-light.webp")`;
 		themeToggle.innerHTML =
 			'<svg class="icon"><use href="./assets/icons.svg#sun"></use></svg>';
 	} else {
 		pattern.style.backgroundImage = `url("assets/pattern-dark.webp")`;
-		profile.src = "assets/lightmode.png";
+		profile.src = "assets/lightmode.webp";
 		document.body.removeAttribute("data-theme");
 		themeToggle.innerHTML =
 			'<svg class="icon"><use href="./assets/icons.svg#moon"></use></svg>';
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	themeToggle.addEventListener("click", () => {
 		if (document.body.getAttribute("data-theme") === "dark") {
 			pattern.style.backgroundImage = `url("assets/pattern-dark.webp")`;
-			profile.src = "assets/lightmode.png";
+			profile.src = "assets/lightmode.webp";
 			document.body.removeAttribute("data-theme");
 			themeToggle.innerHTML =
 				'<svg class="icon"><use href="./assets/icons.svg#moon"></use></svg>';
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			document.body.setAttribute("data-theme", "dark");
 			themeToggle.innerHTML =
 				'<svg class="icon"><use href="./assets/icons.svg#sun"></use></svg>';
-			profile.src = "assets/darkmode.png";
+			profile.src = "assets/darkmode.webp";
 		}
 	});
 
