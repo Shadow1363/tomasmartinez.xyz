@@ -120,7 +120,7 @@ function addSampleProjects() {
 	}
 }
 
-function addNonGithubProjects(){
+function addNonGithubProjects() {
 	// TODO: Create non github projects lmao
 }
 
@@ -331,7 +331,8 @@ function fetchJSONFeed() {
 
 				blogPostsContainer.innerHTML = `<h2 class="blog-title"><span>Latest Posts</span></h2>`;
 				// Create cards for each post
-				for (const post of blog.items.slice(-2)) {
+				console.log(blog.items, blog.items.slice(0, 2));
+				for (const post of blog.items.slice(0, 2)) {
 					// Format the date using the "date_published" property
 					const date = new Date(post.date_published);
 					const formattedDate = date.toLocaleDateString();
