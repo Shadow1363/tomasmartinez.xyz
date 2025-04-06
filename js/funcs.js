@@ -331,7 +331,6 @@ function fetchJSONFeed() {
 
 				blogPostsContainer.innerHTML = `<h2 class="blog-title"><span>Latest Posts</span></h2>`;
 				// Create cards for each post
-				console.log(blog.items, blog.items.slice(0, 2));
 				for (const post of blog.items.slice(0, 2)) {
 					// Format the date using the "date_published" property
 					const date = new Date(post.date_published);
