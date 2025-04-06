@@ -10,7 +10,7 @@ A one page HTMl, CSS & JS Portfolio website loaded with features.
 - Blog Integration (RSS w Json)
 - [Perfect Lighthouse Score](https://pagespeed.web.dev/analysis/https-tomasmartinez-xyz/uawdtgy9rw?form_factor=desktop)
 
-## Todos
+## Todo's
 
 - Fix Cover Images on My Projects
 - ~~Replace Sample Projects with real projects of mine~~
@@ -18,16 +18,13 @@ A one page HTMl, CSS & JS Portfolio website loaded with features.
 - ~~Move SVG's to `/assets/icons.svg` (No font awesome)~~
 - ~~Improve PageSpeed~~
 - ~~Blog Integration (Pull X Latests Posts)~~
-
-## Upcoming
-
 - Move all `.svg` to `icons.svg`
 - Mudkip Easter Egg
 - Pico8 Game Support (Have to make Pico8 Game)
 - Custom API integrations (Have to code backend)
 - Font Update?
 - My own favicon (Applies for https://blog.tomasmartinez.xyz too)
-- Vite it?
+- Vite it? (Obfuscates code and better performance?)
 
 # Credits
 
