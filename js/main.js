@@ -1,6 +1,6 @@
 const USERNAME = "shadow1363";
 const FILTER_TAG = "tomas-martinez";
-const supportedLanguages = ["en", "pt", "es"];
+const SUPPORTED_LANGUAGES = ["en", "pt", "es"];
 // biome-ignore lint/style/useConst: funcs.js modifies
 let languageSettings = {};
 // biome-ignore lint/style/useConst: funcs.js modifies

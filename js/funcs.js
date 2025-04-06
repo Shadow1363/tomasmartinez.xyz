@@ -28,10 +28,9 @@ function fetchGitHubProjects() {
 					} catch (error) {
 						console.error(`Error checking image for ${repo.name}:`, error);
 					}
-
 					const projectCard = createProjectCard(
 						repo.name,
-						repo.description || "No description available",
+						repo.description || "",
 						repo.topics || [],
 						repo.html_url,
 						repo.homepage || null,
@@ -51,63 +50,58 @@ function fetchGitHubProjects() {
 		});
 }
 
-// TODO: Replace to be my actual projects
 function addSampleProjects() {
 	const projectsContainer = document.getElementById("projects-container");
-
-	// Sample projects data
 	const sampleProjects = [
 		{
-			name: "E-Commerce Platform",
-			description:
-				"A fully responsive e-commerce platform with cart functionality and payment integration.",
-			topics: ["JavaScript", "React", "Node.js", "MongoDB"],
-			icon: "fa-shopping-cart",
-			stars: 24,
-			forks: 8,
+			name: "CardCreator",
+			description: "Create your own card game using tab separated values",
+			topics: [
+				"card",
+				"card-game-generator",
+				"excel-export",
+				"playing-cards",
+				"tabletop-simulator",
+				"tsv",
+			],
+			repoUrl: "https://github.com/Shadow1363/CardCreator",
+			demoUrl: "https://shadow1363.github.io/CardCreator/",
+			iconClass:
+				"https://raw.githubusercontent.com/shadow1363/CardCreator/main/cover/cover.webp",
+			stars: 1,
+			forks: 0,
 		},
 		{
-			name: "Weather Application",
-			description:
-				"Real-time weather forecast application using OpenWeather API.",
-			topics: ["JavaScript", "API", "CSS3"],
-			icon: "fa-cloud-sun",
-			stars: 15,
-			forks: 4,
+			name: "Terminal",
+			description: "Terminal inspired portfolio website.",
+			topics: [
+				"command-line",
+				"command-line-interface",
+				"linux",
+				"personal-website",
+				"portfolio",
+				"portfolio-template",
+				"portfolio-website",
+				"shell",
+				"website",
+			],
+			repoUrl: "https://github.com/Shadow1363/Terminal",
+			demoUrl: "https://shadow1363.github.io/Terminal/",
+			iconClass:
+				"https://raw.githubusercontent.com/shadow1363/Terminal/main/cover/cover.webp",
+			stars: 4,
+			forks: 1,
 		},
 		{
-			name: "Task Management System",
-			description:
-				"Kanban-style task management application with drag-and-drop functionality.",
-			topics: ["React", "Redux", "Firebase"],
-			icon: "fa-tasks",
-			stars: 32,
-			forks: 11,
-		},
-		{
-			name: "Personal Finance Tracker",
-			description:
-				"Application to track expenses and income with visualization charts.",
-			topics: ["JavaScript", "Chart.js", "LocalStorage"],
-			icon: "fa-chart-pie",
-			stars: 18,
-			forks: 6,
-		},
-		{
-			name: "Recipe Finder",
-			description: "Search for recipes based on ingredients you have at home.",
-			topics: ["JavaScript", "API", "Bootstrap"],
-			icon: "fa-utensils",
-			stars: 12,
-			forks: 3,
-		},
-		{
-			name: "Social Media Dashboard",
-			description: "Analytics dashboard for social media account management.",
-			topics: ["React", "D3.js", "CSS Grid"],
-			icon: "fa-chart-line",
-			stars: 27,
-			forks: 9,
+			name: "TextDungeon",
+			description: "A text-based RPG.",
+			topics: ["dungeon", "dungeon-crawler", "game", "python", "text-game"],
+			repoUrl: "https://github.com/Shadow1363/TextDungeon",
+			demoUrl: null,
+			iconClass:
+				"https://raw.githubusercontent.com/shadow1363/TextDungeon/main/cover/cover.webp",
+			stars: 1,
+			forks: 0,
 		},
 	];
 
@@ -116,15 +110,18 @@ function addSampleProjects() {
 			project.name,
 			project.description,
 			project.topics,
-			"#",
-			null,
-			project.icon,
+			project.repoUrl,
+			project.demoUrl,
+			project.iconClass,
 			project.stars,
 			project.forks,
 		);
-
 		projectsContainer.appendChild(projectCard);
 	}
+}
+
+function addNonGithubProjects(){
+	// TODO: Create non github projects lmao
 }
 
 function createProjectCard(
@@ -238,7 +235,7 @@ function getUserLanguageFromBrowser() {
 
 	const detectedLang = browserLang.split("-")[0];
 
-	if (supportedLanguages.includes(detectedLang)) {
+	if (SUPPORTED_LANGUAGES.includes(detectedLang)) {
 		currentLanguage = detectedLang;
 	} else {
 		currentLanguage = "en";
