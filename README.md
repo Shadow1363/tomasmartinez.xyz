@@ -1,6 +1,6 @@
 # Portfolio Website
 
-A one page HTMl, CSS & JS Portfolio website loaded with features.
+A one page HTML, CSS & JS Portfolio website loaded with features.
 
 ## Features
 
