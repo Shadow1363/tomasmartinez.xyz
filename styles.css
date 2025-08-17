@@ -2,681 +2,686 @@
     ANCHOR CSS Variables
    ============================================================================= */
 :root {
-	--bg-color: #ffffff;
-	--text-color: #1d1d1f;
-	--accent-color: #0071e3;
-	--secondary-bg: #f5f5f7;
-	--card-bg: #ffffff;
-	--card-border: rgba(0, 0, 0, 0.1);
-	--nav-bg: rgba(255, 255, 255, 0.8);
-	--logo-filter: none;
-	--pan-duration: 100s;
+  --bg-color: #ffffff;
+  --text-color: #1d1d1f;
+  --accent-color: #0071e3;
+  --secondary-bg: #f5f5f7;
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.1);
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --logo-filter: none;
+  --pan-duration: 100s;
 }
 
 /* =============================================================================
    ANCHOR Font Faces
    ============================================================================= */
+
 @font-face {
-	font-family: "Dela Gothic One";
-	src: url("../assets/DelaGothicOne-Regular.ttf") format("truetype");
-	font-weight: 400;
-	font-style: normal;
+  font-family: "Mochiy Pop One";
+  src: url("../assets/MochiyPopOne-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: "Mochiy Pop One";
-	src: url("../assets/MochiyPopOne-Regular.ttf") format("truetype");
-	font-weight: 400;
-	font-style: normal;
+  font-family: "Satoshi";
+  src: url("../assets/Satoshi-Variable.ttf") format("truetype");
+  font-weight: 100 900; /* variable font weights */
+  font-style: normal;
 }
 
 /* =============================================================================
-    ANCHOR Global Reset & Base Styles
+   ANCHOR Global Reset & Base Styles
    ============================================================================= */
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-		Arial, sans-serif;
-	transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html,
+body {
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
 }
 
 body {
-	background-color: var(--bg-color);
-	color: var(--text-color);
-	line-height: 1.5;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
 }
 
 .hidden {
-	display: none !important;
+  display: none !important;
 }
 
 /* =============================================================================
    ANCHOR Theme: Dark Mode
    ============================================================================= */
 [data-theme="dark"] {
-	--bg-color: #000000;
-	--text-color: #f5f5f7;
-	--accent-color: #2997ff;
-	--secondary-bg: #1d1d1f;
-	--card-bg: #1d1d1f;
-	--card-border: rgba(255, 255, 255, 0.1);
-	--nav-bg: rgba(0, 0, 0, 0.8);
+  --bg-color: #000000;
+  --text-color: #f5f5f7;
+  --accent-color: #2997ff;
+  --secondary-bg: #1d1d1f;
+  --card-bg: #1d1d1f;
+  --card-border: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(0, 0, 0, 0.8);
 }
 
 /* =============================================================================
    ANCHOR Navigation
    ============================================================================= */
 nav {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	padding: 20px 40px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: var(--nav-bg);
-	backdrop-filter: blur(10px);
-	z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
 }
 
 .logo {
-	font-size: 24px;
-	font-weight: 600;
-	letter-spacing: -0.5px;
-	filter: var(--logo-filter);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  filter: var(--logo-filter);
 }
 
 .nav-links {
-	display: flex;
-	gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 
 .nav-links button,
 .theme-toggle,
 .lang-selector button {
-	background: none;
-	border: none;
-	color: var(--text-color);
-	font-size: 14px;
-	cursor: pointer;
-	padding: 5px 0;
-	opacity: 0.8;
-	transition: opacity 0.2s;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px 0;
+  opacity: 0.8;
+  transition: opacity 0.2s;
 }
 
 .nav-links button:hover,
 .theme-toggle:hover,
 .lang-selector button:hover {
-	opacity: 1;
+  opacity: 1;
 }
 
 .theme-toggle {
-	margin-left: 20px;
-	display: flex;
-	align-items: center;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .lang-selector {
-	position: relative;
-	display: flex;
-	gap: 10px;
+  position: relative;
+  display: flex;
+  gap: 10px;
 }
 
 .active-lang {
-	opacity: 1;
-	font-weight: 500;
+  opacity: 1;
+  font-weight: 500;
 }
 
 /* =============================================================================
    ANCHOR Hero Section
    ============================================================================= */
 .hero {
-	height: 100vh;
-	padding-top: 80px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
+  height: 100vh;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .hero h1 {
-	font-size: 56px;
-	font-weight: 700;
-	letter-spacing: -1px;
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -1px;
 }
 
 .hero p {
-	font-size: 24px;
-	max-width: 600px;
-	margin-bottom: 40px;
-	color: var(--text-color);
-	opacity: 0.8;
+  font-size: 24px;
+  max-width: 600px;
+  margin-bottom: 40px;
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 /* =============================================================================
    ANCHOR Sections & Titles
    ============================================================================= */
 section {
-	padding: 80px 40px;
-	max-width: 1200px;
-	margin: 0 auto;
+  padding: 80px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .section-title {
-	font-size: 40px;
-	margin-bottom: 60px;
-	text-align: center;
-	font-weight: 600;
-	letter-spacing: -0.5px;
+  font-size: 40px;
+  margin-bottom: 60px;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: -0.5px;
 }
 
 .blog-title {
-	font-size: 30px;
-	text-align: center;
-	font-weight: 600;
-	letter-spacing: -0.5px;
-	margin-bottom: 10px;
+  font-size: 30px;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
 }
 
 /* =============================================================================
    ANCHOR About Section
    ============================================================================= */
 .about-content {
-	display: flex;
-	align-items: center;
-	gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .about-img {
-	flex: 1;
-	text-align: center;
+  flex: 1;
+  text-align: center;
 }
 
 .about-img img {
-	width: 300px;
-	height: 300px;
-	border-radius: 50%;
-	object-fit: cover;
-	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .about-text {
-	flex: 2;
+  flex: 2;
 }
 
 .about-text p {
-	margin-bottom: 20px;
-	font-size: 18px;
-	line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 /* =============================================================================
    ANCHOR Cards & Contact
    ============================================================================= */
 .card {
-	background-color: var(--card-bg);
-	border-radius: 12px;
-	border: 1px solid var(--card-border);
-	margin: 0px auto 40px auto;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-	padding: 20px;
-	text-align: center;
-	max-width: 400px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  margin: 0px auto 40px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
 }
 
 .card p {
-	opacity: 0.8;
+  opacity: 0.8;
 }
 
 .card-author {
-	font-size: 12px;
+  font-size: 12px;
 }
 
 .card-link-wrapper {
-	text-decoration: none;
-	color: inherit;
-	display: block;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 .card {
-	cursor: pointer;
-	transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
 }
 .card:hover {
-	transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 .contact {
-	background-color: var(--card-bg);
-	border-radius: 12px;
-	border: 1px solid var(--card-border);
-	margin: 40px auto;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-	padding: 100px 40px;
-	text-align: center;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  margin: 40px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 100px 40px;
+  text-align: center;
 }
 
 .contact-content {
-	max-width: 600px;
-	margin: 0 auto;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .contact-content p {
-	margin-bottom: 30px;
-	font-size: 18px;
+  margin-bottom: 30px;
+  font-size: 18px;
 }
 
 /* =============================================================================
    ANCHOR Call to Action Button
    ============================================================================= */
 .cta-button {
-	text-decoration: none;
-	background-color: var(--accent-color);
-	color: white;
-	border: none;
-	border-radius: 980px;
-	padding: 12px 30px;
-	font-size: 18px;
-	font-weight: 500;
-	cursor: pointer;
-	transition: all 0.2s;
+  text-decoration: none;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 980px;
+  padding: 12px 30px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .cta-button:hover {
-	transform: scale(1.05);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* =============================================================================
    ANCHOR Social Links & Footer
    ============================================================================= */
 .social-links {
-	display: flex;
-	justify-content: center;
-	gap: 20px;
-	margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
 }
 
 .social-links a {
-	text-decoration: none;
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	background-color: var(--accent-color);
-	color: white;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 20px;
-	transition: transform 0.2s;
+  text-decoration: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: transform 0.2s;
 }
 
 .social-links a:hover {
-	transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 footer {
-	padding: 40px;
-	text-align: center;
-	font-size: 14px;
-	opacity: 0.7;
+  padding: 40px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.7;
 }
 
 /* =============================================================================
    ANCHOR Pattern Background & Animation
    ============================================================================= */
 .pattern {
-	background-image: url("assets/pattern-dark.webp");
-	background-size: 200px;
-	position: absolute;
-	left: 50%;
-	pointer-events: none;
-	translate: -50% 0%;
-	transition: transform 0.0001s ease;
-	z-index: -1;
-	height: 100%;
-	width: 100%;
-	opacity: 0.1;
-	animation: pan var(--pan-duration) linear infinite;
-	will-change: background-position;
+  background-image: url("assets/pattern-dark.webp");
+  background-size: 200px;
+  position: absolute;
+  left: 50%;
+  pointer-events: none;
+  translate: -50% 0%;
+  transition: transform 0.0001s ease;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  opacity: 0.1;
+  animation: pan var(--pan-duration) linear infinite;
+  will-change: background-position;
 }
 
 @keyframes pan {
-	0% {
-		background-position: 0% 0%;
-	}
-	100% {
-		background-position: 100% 0%;
-	}
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
 }
 
 /* -----------------------------------------------------------------------------
    ANCHOR Media Queries for Pattern Animation Duration
 ----------------------------------------------------------------------------- */
 @media (max-width: 1700px) {
-	.pattern {
-		--pan-duration: 60s;
-	}
+  .pattern {
+    --pan-duration: 60s;
+  }
 }
 @media (max-width: 1600px) {
-	.pattern {
-		--pan-duration: 50s;
-	}
+  .pattern {
+    --pan-duration: 50s;
+  }
 }
 @media (max-width: 1200px) {
-	.pattern {
-		--pan-duration: 40s;
-	}
+  .pattern {
+    --pan-duration: 40s;
+  }
 }
 @media (max-width: 768px) {
-	.pattern {
-		--pan-duration: 30s;
-	}
+  .pattern {
+    --pan-duration: 30s;
+  }
 }
 @media (max-width: 480px) {
-	.pattern {
-		--pan-duration: 10s;
-	}
+  .pattern {
+    --pan-duration: 10s;
+  }
 }
 
 /* =============================================================================
    ANCHOR Skills Section
    ============================================================================= */
 .skills-container {
-	margin-top: 80px;
-	overflow: hidden;
+  margin-top: 80px;
+  overflow: hidden;
 }
 
 .skills-row {
-	display: flex;
-	padding: 20px 0;
-	width: fit-content;
-	animation-duration: 30s;
-	animation-timing-function: linear;
-	animation-iteration-count: infinite;
-	animation-play-state: running;
+  display: flex;
+  padding: 20px 0;
+  width: fit-content;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
 }
 
 .skills-row:hover {
-	animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 .row-1 {
-	animation-name: scroll-left;
+  animation-name: scroll-left;
 }
 
 .row-2 {
-	animation-name: scroll-right;
+  animation-name: scroll-right;
 }
 
 @keyframes scroll-left {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(-50%);
-	}
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes scroll-right {
-	0% {
-		transform: translateX(-50%);
-	}
-	100% {
-		transform: translateX(0);
-	}
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .skill-item {
-	background-color: var(--card-bg);
-	padding: 20px;
-	border-radius: 14px;
-	text-align: center;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-	border: 1px solid var(--card-border);
-	margin: 0 15px;
-	min-width: 120px;
-	flex-shrink: 0;
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--card-border);
+  margin: 0 15px;
+  min-width: 120px;
+  flex-shrink: 0;
 }
 
 .skill-item svg {
-	fill: var(--accent-color);
+  fill: var(--accent-color);
 }
 
 /* =============================================================================
    ANCHOR Projects Section
    ============================================================================= */
 .projects-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
-	gap: 30px;
-	margin-top: 40px;
-	justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+  gap: 30px;
+  margin-top: 40px;
+  justify-content: center;
 }
 
 .project-card {
-	background-color: var(--card-bg);
-	border-radius: 20px;
-	overflow: hidden;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	border: 1px solid var(--card-border);
-	display: flex;
-	flex-direction: column;
-	height: 450px;
-	width: 300px;
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  width: 300px;
 }
 
 .project-card:hover {
-	transform: translateY(-10px);
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .project-image {
-	width: 100%;
-	height: 200px;
-	background-color: var(--secondary-bg);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	overflow: hidden;
+  width: 100%;
+  height: 200px;
+  background-color: var(--secondary-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .project-cover {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .project-image i {
-	font-size: 48px;
-	color: var(--accent-color);
+  font-size: 48px;
+  color: var(--accent-color);
 }
 
 .project-content {
-	position: relative;
-	padding: 20px;
-	flex-grow: 1;
-	display: flex;
-	flex-direction: column;
+  position: relative;
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-background {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: var(--card-bg);
-	z-index: 0;
-	opacity: 0.5;
-	filter: blur(5px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--card-bg);
+  z-index: 0;
+  opacity: 0.5;
+  filter: blur(5px);
 }
 
 .project-content h3 {
-	position: inherit;
-	font-size: 20px;
-	z-index: 2;
-	margin-bottom: 5px;
+  position: inherit;
+  font-size: 20px;
+  z-index: 2;
+  margin-bottom: 5px;
 }
 
 .project-stats {
-	position: inherit;
-	display: flex;
-	gap: 15px;
-	margin-bottom: 10px;
-	z-index: 2;
+  position: inherit;
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+  z-index: 2;
 }
 
 .stat {
-	display: flex;
-	align-items: center;
-	gap: 5px;
-	color: var(--text-color);
-	font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-color);
+  font-size: 14px;
 }
 
 .stat svg {
-	color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 .project-content p {
-	position: inherit;
-	z-index: 1;
-	margin-bottom: 15px;
-	opacity: 0.8;
-	font-size: 16px;
-	flex-grow: 1;
-	display: -webkit-box;
-	-webkit-line-clamp: 3;
-	line-clamp: 3;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-	text-overflow: ellipsis;
+  position: inherit;
+  z-index: 1;
+  margin-bottom: 15px;
+  opacity: 0.8;
+  font-size: 16px;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .tags {
-	position: inherit;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
-	margin-bottom: 15px;
-	z-index: 1;
+  position: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+  z-index: 1;
 }
 
 .tag {
-	background-color: var(--secondary-bg);
-	border: 1px solid var(--accent-color);
-	padding: 4px 10px;
-	border-radius: 980px;
-	font-size: 12px;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--accent-color);
+  padding: 4px 10px;
+  border-radius: 980px;
+  font-size: 12px;
 }
 
 .project-links {
-	display: flex;
-	gap: 15px;
-	position: inherit;
-	z-index: 1;
-	margin-top: auto;
+  display: flex;
+  gap: 15px;
+  position: inherit;
+  z-index: 1;
+  margin-top: auto;
 }
 
 .project-links a,
 .card-link {
-	transition: transform 0.3s ease, opacity 0.3s ease;
-	color: var(--accent-color);
-	text-decoration: none;
-	font-size: 14px;
-	font-weight: 500;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .project-links a:hover,
 .card-link:hover {
-	transform: scale(1.1);
-	text-decoration: underline;
+  transform: scale(1.1);
+  text-decoration: underline;
 }
 
 /* =============================================================================
    ANCHOR Loader & Flag
    ============================================================================= */
 .loader {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
 }
 
 .loader:after {
-	content: " ";
-	display: block;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	border: 6px solid var(--accent-color);
-	border-color: var(--accent-color) transparent var(--accent-color) transparent;
-	animation: loader 1.2s linear infinite;
+  content: " ";
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 6px solid var(--accent-color);
+  border-color: var(--accent-color) transparent var(--accent-color) transparent;
+  animation: loader 1.2s linear infinite;
 }
 
 @keyframes loader {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .icon {
-	fill: white;
+  fill: white;
 }
 
 .flag,
 .icon {
-	transition: transform 0.3s ease, opacity 0.3s ease;
-	width: 24px;
-	height: 24px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  width: 24px;
+  height: 24px;
 }
 
 .flag:hover {
-	transform: scale(1.1);
-	opacity: 0.8;
+  transform: scale(1.1);
+  opacity: 0.8;
 }
 
 /* =============================================================================
    ANCHOR Responsive Media Queries
    ============================================================================= */
 @media (max-width: 1000px) {
-	.about-content {
-		flex-direction: column;
-	}
+  .about-content {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 768px) {
-	.hero h1 {
-		font-size: 36px;
-	}
+  .hero h1 {
+    font-size: 36px;
+  }
 
-	.hero p {
-		font-size: 18px;
-	}
+  .hero p {
+    font-size: 18px;
+  }
 
-	.section-title {
-		font-size: 30px;
-	}
+  .section-title {
+    font-size: 30px;
+  }
 
-	nav {
-		padding: 15px 20px;
-	}
+  nav {
+    padding: 15px 20px;
+  }
 
-	.nav-links {
-		gap: 15px;
-		width: auto;
-	}
-	.nav-link {
-		display: none;
-	}
-	.theme-toggle {
-		margin: 0;
-	}
+  .nav-links {
+    gap: 15px;
+    width: auto;
+  }
+  .nav-link {
+    display: none;
+  }
+  .theme-toggle {
+    margin: 0;
+  }
 }
