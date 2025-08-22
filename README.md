@@ -1,37 +1,44 @@
-# Portfolio Website
+# tomasmartinez.xyz
+A one page vanilla HTML, CSS & JS Portfolio website loaded with features.
 
-A one page HTML, CSS & JS Portfolio website loaded with features.
+<img width="956" height="1800" alt="tomasmartinez xyz" src="https://github.com/user-attachments/assets/1afe3b95-3268-44f5-aed6-f0a10b4ddde4" />
 
 ## Features
 
 - Trilingual Support (English, Portuguese, Spanish)
 - Interactive Skills Conveyor
 - Github API Support
-- [Blog](https://blog.tomasmartinez.xyz) Integration (RSS w Json)
-- [Perfect Lighthouse Score](https://pagespeed.web.dev/analysis/https-tomasmartinez-xyz/63ffcozxvr?form_factor=desktop)
+- [Blog](https://blog.tomasmartinez.xyz) Integration (RSS + JSON)
+- [Perfect Lighthouse Score on Desktop](https://pagespeed.web.dev/analysis/https-tomasmartinez-xyz/63ffcozxvr?form_factor=desktop)
 
 ## Todo's
 
-- Fix Cover Images on My Projects
+- Code Orgnization
+- Fix Project Cards
 - Move all `.svg` to `icons.svg`
-- Mudkip Easter Egg
-- Pico8 Game Support (Have to make Pico8 Game)
-- Custom API integrations (Have to code backend)
-- Font Update? Swapped to Satoshi but still not sold on it.
+- Easter Egg's (Mudkip, Books, a lil gimmick)
+- Pico- 8 Game Support (Have to make Pico8 Game first)
+- Custom API integrations (Have to code backend first)
+- Font Update. Swapped to Satoshi but still not fully sold on it.
 - [Cool inspiration!](https://www.liuyuelin.dev/)
 - My own favicon (Applies for https://blog.tomasmartinez.xyz too)
-- Vite it? (Obfuscates code and better performance?)
+- Improve Mobile Performance
+- Swap from https://corsproxy.io to personal solution
 
+### Done
 - ~~Replace Sample Projects with real projects of mine~~
 - ~~Use WEBP on `lightmode.png` & `darkmode.png`~~
 - ~~Move SVG's to `/assets/icons.svg` (No font awesome)~~
-- ~~Improve PageSpeed~~
+- ~~Improve Desktop Performance~~
 - ~~Blog Integration (Pull X Latests Posts)~~
 
-# Credits
+## Credits
 
 - https://lucide.dev/icons
+- https://nucleoapp.com/svg-flag-icons
 - https://simpleicons.org/
 - https://claude.ai
 - https://squoosh.app/
-- Wi
+- https://www.canva.com/
+- https://fonts.google.com/
+- https://corsproxy.io
