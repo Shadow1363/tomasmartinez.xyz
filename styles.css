@@ -456,7 +456,7 @@ footer {
    ============================================================================= */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
   gap: 30px;
   margin-top: 40px;
   justify-content: center;
@@ -471,8 +471,6 @@ footer {
   border: 1px solid var(--card-border);
   display: flex;
   flex-direction: column;
-  height: 450px;
-  width: 300px;
 }
 
 .project-card:hover {
@@ -482,7 +480,7 @@ footer {
 
 .project-image {
   width: 100%;
-  height: 200px;
+  height: 280px;
   background-color: var(--secondary-bg);
   display: flex;
   align-items: center;

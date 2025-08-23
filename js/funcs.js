@@ -187,6 +187,9 @@ function createProjectCard(
 	const tagsDiv = document.createElement("div");
 	tagsDiv.className = "tags";
 
+	// Sort topics alphabetically
+	topics.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+
 	for (const topic of topics) {
 		const tag = document.createElement("span");
 		tag.className = "tag";
