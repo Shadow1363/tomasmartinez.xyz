@@ -1,7 +1,7 @@
 # tomasmartinez.xyz
 A one page vanilla HTML, CSS & JS Portfolio website loaded with features.
 
-<img width="956" height="1800" alt="tomasmartinez xyz" src="https://github.com/user-attachments/assets/1afe3b95-3268-44f5-aed6-f0a10b4ddde4" />
+<img width="956" height="1860" alt="screencapture-tomasmartinez-xyz" src="https://github.com/user-attachments/assets/3dddca0e-7c0b-411e-886c-0ec3558f4288" />
 
 ## Features
 
