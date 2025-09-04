@@ -19,14 +19,14 @@
 
 @font-face {
   font-family: "Mochiy Pop One";
-  src: url("../assets/MochiyPopOne-Regular.ttf") format("truetype");
+  src: url("../assets/fonts/MochiyPopOne-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Satoshi";
-  src: url("../assets/Satoshi-Variable.ttf") format("truetype");
+  src: url("../assets/fonts/Satoshi-Variable.ttf") format("truetype");
   font-weight: 100 900; /* variable font weights */
   font-style: normal;
 }
