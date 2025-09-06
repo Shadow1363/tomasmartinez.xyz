@@ -210,7 +210,8 @@ async function createProjectCard(
   if (demoUrl?.includes("marketplace.visualstudio.com")) {
     const extensionId = demoUrl.split("itemName=")[1];
     const downloads = await fetchVSCodeStats(extensionId);
-    statsDiv.innerHTML += `
+    if (downloads != 0 && typeof downloads === "number") {
+      statsDiv.innerHTML += `
 		<div class="stat">
 			<svg class="icon">
               <use href="./assets/icons.svg#download"></use>
@@ -218,6 +219,7 @@ async function createProjectCard(
 			<span style="font-weight: bold;">${downloads}</span>
 		</div>
 	`;
+    }
   }
 
   // Project description
