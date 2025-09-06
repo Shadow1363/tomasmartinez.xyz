@@ -12,7 +12,7 @@ function fetchGitHubProjects() {
     .then(async (repos) => {
       projectsContainer.innerHTML = "";
       if (repos.length === 0) {
-        addSampleProjects();
+        await addSampleProjects();
         return;
       }
 
@@ -28,7 +28,7 @@ function fetchGitHubProjects() {
           } catch (error) {
             console.error(`Error checking image for ${repo.name}:`, error);
           }
-          const projectCard = createProjectCard(
+          const projectCard = await createProjectCard(
             repo.name,
             repo.description || "",
             repo.topics || [],
@@ -43,14 +43,14 @@ function fetchGitHubProjects() {
         }
       }
     })
-    .catch((error) => {
+    .catch(async (error) => {
       console.error("Error fetching GitHub projects:", error);
       projectsContainer.innerHTML = "";
-      addSampleProjects();
+      await addSampleProjects();
     });
 }
 
-function addSampleProjects() {
+async function addSampleProjects() {
   const projectsContainer = document.getElementById("projects-container");
   const sampleProjects = [
     {
@@ -106,7 +106,7 @@ function addSampleProjects() {
   ];
 
   for (const project of sampleProjects) {
-    const projectCard = createProjectCard(
+    const projectCard = await createProjectCard(
       project.name,
       project.description,
       project.topics,
@@ -151,7 +151,7 @@ function addNonGithubProjects() {
   }
 }
 
-function createProjectCard(
+async function createProjectCard(
   name,
   description,
   topics,
@@ -205,6 +205,20 @@ function createProjectCard(
 			<span style="font-weight: bold;">${forks}</span>
 		</div>
 	`;
+
+  // Project Stats Downloads
+  if (demoUrl?.includes("marketplace.visualstudio.com")) {
+    const extensionId = demoUrl.split("itemName=")[1];
+    const downloads = await fetchVSCodeStats(extensionId);
+    statsDiv.innerHTML += `
+		<div class="stat">
+			<svg class="icon">
+              <use href="./assets/icons.svg#download"></use>
+            </svg>
+			<span style="font-weight: bold;">${downloads}</span>
+		</div>
+	`;
+  }
 
   // Project description
   const desc = document.createElement("p");
@@ -403,4 +417,54 @@ function fetchJSONFeed() {
         blogPostsContainer.remove(); // Remove the element from the DOM
       }
     });
+}
+
+async function fetchVSCodeStats(extensionId) {
+  const url =
+    "https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery";
+  const corsProxyUrl =
+    "https://corsproxy.io/?url=https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery";
+
+  const options = {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      accept: "application/json;api-version=3.0-preview.1",
+      origin: "https://tomasmartinez.xyz",
+      referer: "https://tomasmartinez.xyz",
+    },
+    body: JSON.stringify({
+      filters: [
+        {
+          criteria: [
+            {
+              filterType: 7,
+              value: extensionId,
+            },
+          ],
+        },
+      ],
+      flags: 262,
+    }),
+  };
+
+  try {
+    // Try direct request first
+    let response = await fetch(url, options);
+
+    // If direct request fails, try with CORS proxy
+    if (!response.ok) {
+      response = await fetch(corsProxyUrl, options);
+    }
+
+    const data = await response.json();
+    const statistics = data.results[0].extensions[0].statistics;
+    const installStat = statistics.find(
+      (stat) => stat.statisticName === "install"
+    );
+    return installStat ? parseInt(installStat.value) : 0;
+  } catch (error) {
+    console.error("Error fetching VS Code stats:", error);
+    return 0;
+  }
 }
