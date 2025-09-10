@@ -40,3 +40,4 @@ A one page vanilla HTML, CSS & JS Portfolio website loaded with features.
 - https://www.canva.com/
 - https://fonts.google.com/
 - https://corsproxy.io
+- https://www.youtube.com/watch?v=x872keruUWQ
