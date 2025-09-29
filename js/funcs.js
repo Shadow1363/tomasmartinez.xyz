@@ -89,7 +89,7 @@ async function addSampleProjects() {
       demoUrl: "https://shadow1363.github.io/Terminal/",
       iconClass:
         "https://raw.githubusercontent.com/shadow1363/Terminal/main/cover/cover.webp",
-      stars: 4,
+      stars: 5,
       forks: 1,
     },
     {
@@ -423,15 +423,15 @@ function fetchJSONFeed() {
 
 async function fetchVSCodeStats(extensionId) {
   const url =
-    "https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery";
+    "https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery?api-version=7.1-preview.1";
   const corsProxyUrl =
-    "https://corsproxy.io/?url=https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery";
+    "https://corsproxy.io/?url=https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery?api-version=7.1-preview.1";
 
   const options = {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      accept: "application/json;api-version=3.0-preview.1",
+      accept: "application/json; api-version=7.1-preview.1",
       origin: "https://tomasmartinez.xyz",
       referer: "https://tomasmartinez.xyz",
     },
@@ -464,7 +464,7 @@ async function fetchVSCodeStats(extensionId) {
     const installStat = statistics.find(
       (stat) => stat.statisticName === "install"
     );
-    return installStat ? parseInt(installStat.value) : 0;
+    return installStat ? Number.parseInt(installStat.value) : 0;
   } catch (error) {
     console.error("Error fetching VS Code stats:", error);
     return 0;
