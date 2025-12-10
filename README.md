@@ -1,4 +1,5 @@
 # tomasmartinez.xyz
+
 A one page vanilla HTML, CSS & JS Portfolio website loaded with features.
 
 ## Features
@@ -23,6 +24,7 @@ A one page vanilla HTML, CSS & JS Portfolio website loaded with features.
 - Swap from https://corsproxy.io to personal solution
 
 ### Done
+
 - ~~Fix Project Cards~~
 - ~~Replace Sample Projects with real projects of mine~~
 - ~~Use WEBP on `lightmode.png` & `darkmode.png`~~
