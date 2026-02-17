@@ -1,6 +1,5 @@
-function fetchGitHubProjects() {
+async function fetchGitHubProjects() {
   const projectsContainer = document.getElementById("projects-container");
-  addNonGithubProjects();
   // Fetch repositories from GitHub API
   fetch(`https://api.github.com/users/${USERNAME}/repos`)
     .then((response) => {
@@ -11,14 +10,30 @@ function fetchGitHubProjects() {
     })
     .then(async (repos) => {
       projectsContainer.innerHTML = "";
-      if (repos.length === 0) {
+      await addNonGithubProjects();
+
+      if (!Array.isArray(repos) || repos.length === 0) {
         await addSampleProjects();
         return;
       }
 
-      for (const repo of repos) {
-        if (repo.topics.includes(FILTER_TAG)) {
-          repo.topics = repo.topics.filter((topic) => topic !== FILTER_TAG);
+      const projectsPromises = repos
+        .filter(
+          (repo) =>
+            Array.isArray(repo.topics) && repo.topics.includes(FILTER_TAG),
+        )
+        .map(async (repo) => {
+          const topics = (repo.topics || []).filter(
+            (topic) => topic !== FILTER_TAG,
+          );
+          let order = null;
+          for (const t of topics) {
+            const m = t.match(/^order[:\-](\d+)$/i);
+            if (m) {
+              order = Number.parseInt(m[1], 10);
+            }
+          }
+          const topicsClean = topics.filter((t) => !/^order[:\-]\d+$/i.test(t));
           const imageUrl = `https://raw.githubusercontent.com/${USERNAME}/${repo.name}/main/cover/cover.webp`;
 
           let validImage = false;
@@ -28,19 +43,55 @@ function fetchGitHubProjects() {
           } catch (error) {
             console.error(`Error checking image for ${repo.name}:`, error);
           }
-          const projectCard = await createProjectCard(
-            repo.name,
-            repo.description || "",
-            repo.topics || [],
-            repo.html_url,
-            repo.homepage || null,
-            validImage ? imageUrl : null,
-            repo.stargazers_count,
-            repo.forks_count
-          );
+          let downloads = 0;
+          if (
+            repo.homepage &&
+            repo.homepage.includes("marketplace.visualstudio.com")
+          ) {
+            const extensionId = repo.homepage.split("itemName=")[1];
+            if (extensionId) {
+              downloads = await fetchVSCodeStats(extensionId);
+            }
+          }
+          return {
+            name: repo.name,
+            description: repo.description || "",
+            topics: topicsClean,
+            repoUrl: repo.html_url,
+            homepage: repo.homepage || null,
+            image: validImage ? imageUrl : null,
+            stars: repo.stargazers_count || 0,
+            forks: repo.forks_count || 0,
+            downloads,
+            order,
+          };
+        });
 
-          projectsContainer.appendChild(projectCard);
-        }
+      const projects = await Promise.all(projectsPromises);
+
+      projects.sort((a, b) => {
+        const ao =
+          typeof a.order === "number" ? a.order : Number.POSITIVE_INFINITY;
+        const bo =
+          typeof b.order === "number" ? b.order : Number.POSITIVE_INFINITY;
+        if (ao !== bo) return ao - bo;
+        if (b.stars !== a.stars) return b.stars - a.stars;
+        if (b.downloads !== a.downloads) return b.downloads - a.downloads;
+        return a.name.localeCompare(b.name);
+      });
+
+      for (const p of projects) {
+        const projectCard = await createProjectCard(
+          p.name,
+          p.description,
+          p.topics,
+          p.repoUrl,
+          p.homepage,
+          p.image,
+          p.stars,
+          p.forks,
+        );
+        projectsContainer.appendChild(projectCard);
       }
     })
     .catch(async (error) => {
@@ -114,39 +165,37 @@ async function addSampleProjects() {
       project.demoUrl,
       project.iconClass,
       project.stars,
-      project.forks
+      project.forks,
     );
     projectsContainer.appendChild(projectCard);
   }
 }
 
-function addNonGithubProjects() {
-  return;
-  // TODO: Fix this so it adds it without the github
+async function addNonGithubProjects() {
   const projectsContainer = document.getElementById("projects-container");
   const sampleProjects = [
     {
       name: "Be a Better Friend",
-      description: "Never forget your friend's birthday!",
+      description:
+        "Never forget what matters most about the people you care about",
       topics: ["app"],
-      repoUrl: "https://github.com/Shadow1363/CardCreator",
-      demoUrl: "https://shadow1363.github.io/CardCreator/",
-      iconClass:
-        "https://raw.githubusercontent.com/shadow1363/CardCreator/main/cover/cover.webp",
+      demoUrl: "https://beabetterfriend.app",
+      iconClass: "../assets/projects/betterfriend.png",
     },
   ];
 
   for (const project of sampleProjects) {
-    const projectCard = createProjectCard(
+    const projectCard = await createProjectCard(
       project.name,
       project.description,
       project.topics,
-      project.repoUrl,
-      project.demoUrl,
-      project.iconClass,
-      project.stars,
-      project.forks
+      project?.repoUrl || null,
+      project?.demoUrl,
+      project?.iconClass || "https",
+      project?.stars || null,
+      project?.forks || null,
     );
+    console.log(projectCard);
     projectsContainer.appendChild(projectCard);
   }
 }
@@ -159,7 +208,7 @@ async function createProjectCard(
   demoUrl,
   iconClass,
   stars = 0,
-  forks = 0
+  forks = 0,
 ) {
   const card = document.createElement("div");
   card.className = "project-card";
@@ -168,13 +217,11 @@ async function createProjectCard(
   const imageDiv = document.createElement("div");
   imageDiv.className = "project-image";
 
-  if (iconClass?.includes("https")) {
-    const image = document.createElement("img");
-    image.className = "project-cover";
-    image.src = iconClass;
-    image.alt = `${name} Image`;
-    imageDiv.appendChild(image); // Append the image element
-  }
+  const image = document.createElement("img");
+  image.className = "project-cover";
+  image.src = iconClass;
+  image.alt = `${name} Image`;
+  imageDiv.appendChild(image);
 
   // Project content
   const contentDiv = document.createElement("div");
@@ -187,11 +234,11 @@ async function createProjectCard(
   // Project title
   const title = document.createElement("h3");
   title.innerHTML = `<span>${name}</span>`;
-
-  // Project stats (stars and forks)
   const statsDiv = document.createElement("div");
-  statsDiv.className = "project-stats";
-  statsDiv.innerHTML = `
+
+  if (stars !== null && forks !== null) {
+    statsDiv.className = "project-stats";
+    statsDiv.innerHTML = `
 		<div class="stat">
 			<svg class="icon">
               <use href="./assets/icons.svg#star"></use>
@@ -205,6 +252,7 @@ async function createProjectCard(
 			<span style="font-weight: bold;">${forks}</span>
 		</div>
 	`;
+  }
 
   // Project Stats Downloads
   if (demoUrl?.includes("marketplace.visualstudio.com")) {
@@ -245,13 +293,14 @@ async function createProjectCard(
   linksDiv.className = "project-links";
 
   // GitHub link
-  const githubLink = document.createElement("a");
-  githubLink.setAttribute("aria-label", `${name}'s Code`);
-  githubLink.href = repoUrl;
-  githubLink.target = "_blank";
-  githubLink.innerHTML = `<span><svg class="icon"><use href="./assets/icons.svg#code"></use></svg></span>`;
-
-  linksDiv.appendChild(githubLink);
+  if (repoUrl) {
+    const githubLink = document.createElement("a");
+    githubLink.setAttribute("aria-label", `${name}'s Code`);
+    githubLink.href = repoUrl;
+    githubLink.target = "_blank";
+    githubLink.innerHTML = `<span><svg class="icon"><use href="./assets/icons.svg#code"></use></svg></span>`;
+    linksDiv.appendChild(githubLink);
+  }
 
   // Demo link if available
   if (demoUrl) {
@@ -360,24 +409,25 @@ function getNestedProperty(obj, path) {
 function fetchJSONFeed() {
   const blogPostsContainer = document.getElementById("blog-posts");
 
-  fetch(
-    "https://corsproxy.io/?url=https://blog.tomasmartinez.xyz/feed_json_created.json"
-  )
+  fetch("https://blog.tomasmartinez.xyz/feed_json_created.json")
     .then((response) => response.text())
     .then((data) => {
       try {
         const blog = JSON.parse(data);
+        if (!blogPostsContainer) {
+          return;
+        }
         blogPostsContainer.innerHTML = "";
 
-        if (blog.items.length === 0) {
-          if (blogPostsContainer) {
-            blogPostsContainer.remove();
-          }
+        const items = Array.isArray(blog?.items) ? blog.items : [];
+        if (items.length === 0) {
+          blogPostsContainer.remove();
+          return;
         }
 
         blogPostsContainer.innerHTML = `<h2 class="blog-title"><span>Latest Posts</span></h2>`;
         // Create cards for each post
-        for (const post of blog.items.slice(0, 2)) {
+        for (const post of items.slice(0, 2)) {
           // Format the date using the "date_published" property
           const date = new Date(post.date_published);
           const formattedDate = date.toLocaleDateString();
@@ -395,7 +445,7 @@ function fetchJSONFeed() {
 						  <h2 class="card-title">${post.title}</h2>
 						  <span class="card-date">${formattedDate}</span>
 						  <p class="card-description">${description}</p>
-						  <p class="card-author">By ${post.authors[0].name}</p>
+						  <p class="card-author">By ${post.authors && post.authors[0] ? post.authors[0].name : ""}</p>
 						</div>
 					  </div>
 					</a>
@@ -451,10 +501,7 @@ async function fetchVSCodeStats(extensionId) {
   };
 
   try {
-    // Try direct request first
     let response = await fetch(url, options);
-
-    // If direct request fails, try with CORS proxy
     if (!response.ok) {
       response = await fetch(corsProxyUrl, options);
     }
@@ -462,7 +509,7 @@ async function fetchVSCodeStats(extensionId) {
     const data = await response.json();
     const statistics = data.results[0].extensions[0].statistics;
     const installStat = statistics.find(
-      (stat) => stat.statisticName === "install"
+      (stat) => stat.statisticName === "install",
     );
     return installStat ? Number.parseInt(installStat.value) : 0;
   } catch (error) {
