@@ -1,4 +1,4 @@
-# tomasmartinez.xyz
+# tomasmartinez.xyz [![Better Stack Badge](https://uptime.betterstack.com/status-badges/v3/monitor/2il1v.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
 
 A one page vanilla HTML, CSS & JS Portfolio website loaded with features.
 
