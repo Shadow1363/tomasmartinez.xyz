@@ -21,10 +21,9 @@ A one page vanilla HTML, CSS & JS Portfolio website loaded with features.
 - [Cool inspiration!](https://www.liuyuelin.dev/)
 - My own favicon (Applies for https://blog.tomasmartinez.xyz too)
 - Improve Mobile Performance
-- Swap from https://corsproxy.io to personal solution
 
 ### Done
-
+-  ~~Swap from https://corsproxy.io to personal solution~~
 - ~~Fix Project Cards~~
 - ~~Replace Sample Projects with real projects of mine~~
 - ~~Use WEBP on `lightmode.png` & `darkmode.png`~~
@@ -42,4 +41,4 @@ A one page vanilla HTML, CSS & JS Portfolio website loaded with features.
 - https://www.canva.com/
 - https://fonts.google.com/
 - https://corsproxy.io
-- https://www.youtube.com/watch?v=x872keruUWQ
+- [Repeating Image Pattern](https://www.youtube.com/watch?v=x872keruUWQ)
