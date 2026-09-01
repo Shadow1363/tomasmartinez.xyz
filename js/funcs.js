@@ -430,7 +430,7 @@ function fetchJSONFeed() {
         for (const post of items.slice(0, 2)) {
           // Format the date using the "date_published" property
           const date = new Date(post.date_published);
-          const formattedDate = date.toLocaleDateString();
+          const formattedDate = date.toLocaleDateString("en-GB"); // The only right way to display dates
 
           // Extract plain text from the HTML description (if needed)
           const tempDiv = document.createElement("div");
