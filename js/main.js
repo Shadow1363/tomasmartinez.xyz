@@ -13,60 +13,60 @@ document.addEventListener("DOMContentLoaded", loadLanguageSettings);
 
 // Handle Light and Dark Mode
 document.addEventListener("DOMContentLoaded", () => {
-	// Theme toggling
-	const themeToggle = document.querySelector(".theme-toggle");
-	const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-	const pattern = document.querySelector(".pattern");
-	const profile = document.getElementById("profile-image");
-	console.log(prefersDarkScheme);
+  // Theme toggling
+  const themeToggle = document.querySelector(".theme-toggle");
+  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const pattern = document.querySelector(".pattern");
+  const profile = document.getElementById("profile-image");
+  console.log(prefersDarkScheme);
 
-	// Set initial theme based on system preference
-	if (prefersDarkScheme.matches) {
-		document.body.setAttribute("data-theme", "dark");
-		profile.src = "assets/darkmode.webp";
-		pattern.style.backgroundImage = `url("assets/pattern-light.webp")`;
-		themeToggle.innerHTML =
-			'<svg class="icon"><use href="./assets/icons.svg#sun"></use></svg>';
-	} else {
-		pattern.style.backgroundImage = `url("assets/pattern-dark.webp")`;
-		profile.src = "assets/lightmode.webp";
-		document.body.removeAttribute("data-theme");
-		themeToggle.innerHTML =
-			'<svg class="icon"><use href="./assets/icons.svg#moon"></use></svg>';
-	}
+  // Set initial theme based on system preference
+  if (prefersDarkScheme.matches) {
+    document.body.setAttribute("data-theme", "dark");
+    profile.src = "assets/darkmode.webp";
+    pattern.style.backgroundImage = `url("assets/pattern-light.webp")`;
+    themeToggle.innerHTML =
+      '<svg class="icon"><use href="./assets/icons.svg#sun"></use></svg>';
+  } else {
+    pattern.style.backgroundImage = `url("assets/pattern-dark.webp")`;
+    profile.src = "assets/lightmode.webp";
+    document.body.removeAttribute("data-theme");
+    themeToggle.innerHTML =
+      '<svg class="icon"><use href="./assets/icons.svg#moon"></use></svg>';
+  }
 
-	themeToggle.addEventListener("click", () => {
-		if (document.body.getAttribute("data-theme") === "dark") {
-			pattern.style.backgroundImage = `url("assets/pattern-dark.webp")`;
-			profile.src = "assets/lightmode.webp";
-			document.body.removeAttribute("data-theme");
-			themeToggle.innerHTML =
-				'<svg class="icon"><use href="./assets/icons.svg#moon"></use></svg>';
-		} else {
-			pattern.style.backgroundImage = `url("assets/pattern-light.webp")`;
-			document.body.setAttribute("data-theme", "dark");
-			themeToggle.innerHTML =
-				'<svg class="icon"><use href="./assets/icons.svg#sun"></use></svg>';
-			profile.src = "assets/darkmode.webp";
-		}
-	});
+  themeToggle.addEventListener("click", () => {
+    if (document.body.getAttribute("data-theme") === "dark") {
+      pattern.style.backgroundImage = `url("assets/pattern-dark.webp")`;
+      profile.src = "assets/lightmode.webp";
+      document.body.removeAttribute("data-theme");
+      themeToggle.innerHTML =
+        '<svg class="icon"><use href="./assets/icons.svg#moon"></use></svg>';
+    } else {
+      pattern.style.backgroundImage = `url("assets/pattern-light.webp")`;
+      document.body.setAttribute("data-theme", "dark");
+      themeToggle.innerHTML =
+        '<svg class="icon"><use href="./assets/icons.svg#sun"></use></svg>';
+      profile.src = "assets/darkmode.webp";
+    }
+  });
 
-	// Smooth scrolling for navigation
-	const navLinks = document.querySelectorAll(".nav-link");
+  // Smooth scrolling for navigation
+  const navLinks = document.querySelectorAll(".nav-link");
 
-	for (const link of navLinks) {
-		link.addEventListener("click", function (e) {
-			e.preventDefault();
-			const targetId = this.getAttribute("data-section");
-			const targetSection = document.getElementById(targetId);
+  for (const link of navLinks) {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("data-section");
+      const targetSection = document.getElementById(targetId);
 
-			window.scrollTo({
-				top: targetSection.offsetTop - 80,
-				behavior: "smooth",
-			});
-		});
-	}
+      window.scrollTo({
+        top: targetSection.offsetTop,
+        behavior: "smooth",
+      });
+    });
+  }
 
-	// GitHub API integration
-	fetchGitHubProjects();
+  // GitHub API integration
+  fetchGitHubProjects();
 });
