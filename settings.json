@@ -27,8 +27,7 @@
         },
         "contact": {
           "title": "Get In Touch",
-          "text": "Feel free to reach out if you'd like to work together or just say hello!",
-          "cta": "Email Me"
+          "text": "Feel free to reach out if you'd like to work together or just say hello!"
         },
         "footer": "© 2026 Tomas Martinez. All rights reserved."
       }
@@ -60,8 +59,7 @@
         },
         "contact": {
           "title": "Contáctame",
-          "text": "¡No dudes en contactarme si deseas trabajar juntos o simplemente saludar!",
-          "cta": "Envíame un Email"
+          "text": "¡No dudes en contactarme si deseas trabajar juntos o simplemente saludar!"
         },
         "footer": "© 2026 Tomás Martínez. Todos los derechos reservados."
       }
@@ -93,8 +91,7 @@
         },
         "contact": {
           "title": "Entre em Contato",
-          "text": "Sinta-se à vontade para entrar em contato se quiser trabalhar junto ou apenas dizer olá!",
-          "cta": "Me Envie um Email"
+          "text": "Sinta-se à vontade para entrar em contato se quiser trabalhar junto ou apenas dizer olá!"
         },
         "footer": "© 2026 Tomás Martinez. Todos os direitos reservados."
       }
