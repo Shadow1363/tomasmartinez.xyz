@@ -321,7 +321,7 @@ section {
    ============================================================================= */
 .social-links {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: balance;
   justify-content: center;
   gap: 20px;
   margin-top: 40px;
@@ -574,7 +574,7 @@ footer {
 .tags {
   position: inherit;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: balance;
   gap: 8px;
   margin-bottom: 15px;
   z-index: 1;
