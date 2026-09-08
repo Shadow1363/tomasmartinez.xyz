@@ -14,6 +14,7 @@ async function fetchGitHubProjects() {
 
       if (!Array.isArray(repos) || repos.length === 0) {
         await addSampleProjects();
+        scheduleAdjustProjectsGridHeight();
         return;
       }
 
@@ -93,13 +94,66 @@ async function fetchGitHubProjects() {
         );
         projectsContainer.appendChild(projectCard);
       }
+      scheduleAdjustProjectsGridHeight();
     })
     .catch(async (error) => {
       console.error("Error fetching GitHub projects:", error);
       projectsContainer.innerHTML = "";
       await addSampleProjects();
+      scheduleAdjustProjectsGridHeight();
     });
 }
+
+function adjustProjectsGridHeight() {
+  const container = document.getElementById("projects-container");
+  if (!container) return;
+
+  // Reset first so we always measure against the natural layout
+  container.style.removeProperty("--projects-max-height");
+
+  const cards = Array.from(container.querySelectorAll(".project-card"));
+  if (cards.length === 0) return;
+
+  const containerTop = container.getBoundingClientRect().top;
+  const tolerance = 2; // px, to absorb subpixel rounding
+  const rowTops = [];
+
+  for (const card of cards) {
+    const top = Math.round(card.getBoundingClientRect().top - containerTop);
+    if (!rowTops.some((t) => Math.abs(t - top) <= tolerance)) {
+      rowTops.push(top);
+    }
+  }
+  rowTops.sort((a, b) => a - b);
+
+  // Two rows or fewer already fit without needing a scrollbar
+  if (rowTops.length <= 2) return;
+
+  const secondRowTop = rowTops[1];
+  let secondRowBottom = 0;
+  for (const card of cards) {
+    const top = Math.round(card.getBoundingClientRect().top - containerTop);
+    if (Math.abs(top - secondRowTop) <= tolerance) {
+      secondRowBottom = Math.max(
+        secondRowBottom,
+        card.getBoundingClientRect().bottom - containerTop,
+      );
+    }
+  }
+
+  container.style.setProperty(
+    "--projects-max-height",
+    `${Math.ceil(secondRowBottom)}px`,
+  );
+}
+
+let projectsGridResizeTimeout;
+function scheduleAdjustProjectsGridHeight() {
+  clearTimeout(projectsGridResizeTimeout);
+  projectsGridResizeTimeout = setTimeout(adjustProjectsGridHeight, 150);
+}
+
+window.addEventListener("resize", scheduleAdjustProjectsGridHeight);
 
 async function addSampleProjects() {
   const projectsContainer = document.getElementById("projects-container");
@@ -173,16 +227,7 @@ async function addSampleProjects() {
 
 async function addNonGithubProjects() {
   const projectsContainer = document.getElementById("projects-container");
-  const sampleProjects = [
-    {
-      name: "Be a Better Friend",
-      description:
-        "Never forget what matters most about the people you care about",
-      topics: ["app"],
-      demoUrl: "https://beabetterfriend.app",
-      iconClass: "../assets/projects/betterfriend.png",
-    },
-  ];
+  const sampleProjects = NON_GITHUB_PROJECTS;
 
   for (const project of sampleProjects) {
     const projectCard = await createProjectCard(
@@ -221,6 +266,8 @@ async function createProjectCard(
   image.className = "project-cover";
   image.src = iconClass;
   image.alt = `${name} Image`;
+  image.addEventListener("load", scheduleAdjustProjectsGridHeight); // ← add
+  image.addEventListener("error", scheduleAdjustProjectsGridHeight); // ← add
   imageDiv.appendChild(image);
 
   // Project content

@@ -1,9 +1,17 @@
 const USERNAME = "shadow1363";
 const FILTER_TAG = "tomas-martinez";
 const SUPPORTED_LANGUAGES = ["en", "pt", "es"];
-// biome-ignore lint/style/useConst: funcs.js modifies
+const NON_GITHUB_PROJECTS = [
+  {
+    name: "Be a Better Friend",
+    description:
+      "Never forget what matters most about the people you care about",
+    topics: ["app", "mobile", "capactior", "ios"],
+    demoUrl: "https://beabetterfriend.app",
+    iconClass: "../assets/projects/betterfriend.png",
+  },
+];
 let languageSettings = {};
-// biome-ignore lint/style/useConst: funcs.js modifies
 let currentLanguage = "en";
 
 // Initialize language settings when the page loads
