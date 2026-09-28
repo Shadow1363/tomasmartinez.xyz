@@ -20,7 +20,8 @@
             "In my free time, I play chess, guitar, or work on one of my projects (Check out my blog!)"
           ],
           "skills": "Skills",
-          "endorsements": "Not endorsements"
+          "endorsements": "Not endorsements",
+          "diagram": "How this very site fits together, drawn with Mermaid.js"
         },
         "projects": {
           "title": "My Projects"
@@ -52,7 +53,8 @@
             "En mi tiempo libre juego ajedrez, toco la guitarra o trabajo en alguno de mis proyectos (¡Mira mi blog!)"
           ],
           "skills": "Habilidades",
-          "endorsements": "Não é avales"
+          "endorsements": "No son avales",
+          "diagram": "Cómo funciona este mismo sitio, dibujado con Mermaid.js"
         },
         "projects": {
           "title": "Mis Proyectos"
@@ -84,7 +86,8 @@
             "No meu tempo livre, jogo xadrez, toco guitarra ou trabalho em algum dos meus projetos (Dá uma olhada no meu blog!)"
           ],
           "skills": "Habilidades",
-          "endorsements": "Não é endossos"
+          "endorsements": "Não é endossos",
+          "diagram": "Como este próprio site funciona, desenhado com Mermaid.js"
         },
         "projects": {
           "title": "Meus Projetos"

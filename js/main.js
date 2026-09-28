@@ -1,6 +1,9 @@
 const USERNAME = "shadow1363";
 const FILTER_TAG = "tomas-martinez";
 const SUPPORTED_LANGUAGES = ["en", "pt", "es"];
+const SHINY_ODDS = 3000;
+const MERMAID_URL =
+  "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
 const NON_GITHUB_PROJECTS = [
   {
     name: "Be a Better Friend",
@@ -8,7 +11,7 @@ const NON_GITHUB_PROJECTS = [
       "Never forget what matters most about the people you care about",
     topics: ["app", "mobile", "capactior", "ios"],
     demoUrl: "https://beabetterfriend.app",
-    iconClass: "../assets/projects/betterfriend.png",
+    iconClass: "assets/projects/betterfriend.webp",
   },
 ];
 let languageSettings = {};
@@ -20,43 +23,28 @@ document.addEventListener("DOMContentLoaded", fetchJSONFeed);
 document.addEventListener("DOMContentLoaded", loadLanguageSettings);
 
 // Handle Light and Dark Mode
-document.addEventListener("DOMContentLoaded", () => {
-  // Theme toggling
+function setTheme(dark) {
   const themeToggle = document.querySelector(".theme-toggle");
-  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
   const pattern = document.querySelector(".pattern");
   const profile = document.getElementById("profile-image");
-  console.log(prefersDarkScheme);
 
-  // Set initial theme based on system preference
-  if (prefersDarkScheme.matches) {
+  if (dark) {
     document.body.setAttribute("data-theme", "dark");
-    profile.src = "assets/darkmode.webp";
-    pattern.style.backgroundImage = `url("assets/pattern-light.webp")`;
-    themeToggle.innerHTML =
-      '<svg class="icon"><use href="./assets/icons.svg#sun"></use></svg>';
   } else {
-    pattern.style.backgroundImage = `url("assets/pattern-dark.webp")`;
-    profile.src = "assets/lightmode.webp";
     document.body.removeAttribute("data-theme");
-    themeToggle.innerHTML =
-      '<svg class="icon"><use href="./assets/icons.svg#moon"></use></svg>';
   }
+  pattern.style.backgroundImage = `url("assets/pattern-${dark ? "light" : "dark"}.webp")`;
+  profile.src = `assets/${dark ? "dark" : "light"}mode.webp`;
+  themeToggle.innerHTML = `<svg class="icon"><use href="./assets/icons.svg#${dark ? "sun" : "moon"}"></use></svg>`;
+  rerenderSystemDiagram();
+}
 
-  themeToggle.addEventListener("click", () => {
-    if (document.body.getAttribute("data-theme") === "dark") {
-      pattern.style.backgroundImage = `url("assets/pattern-dark.webp")`;
-      profile.src = "assets/lightmode.webp";
-      document.body.removeAttribute("data-theme");
-      themeToggle.innerHTML =
-        '<svg class="icon"><use href="./assets/icons.svg#moon"></use></svg>';
-    } else {
-      pattern.style.backgroundImage = `url("assets/pattern-light.webp")`;
-      document.body.setAttribute("data-theme", "dark");
-      themeToggle.innerHTML =
-        '<svg class="icon"><use href="./assets/icons.svg#sun"></use></svg>';
-      profile.src = "assets/darkmode.webp";
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  // Set initial theme based on system preference
+  setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+  document.querySelector(".theme-toggle").addEventListener("click", () => {
+    setTheme(document.body.getAttribute("data-theme") !== "dark");
   });
 
   // Smooth scrolling for navigation
@@ -77,4 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // GitHub API integration
   fetchGitHubProjects();
+
+  observeSystemDiagram();
+  setupMudkip();
 });

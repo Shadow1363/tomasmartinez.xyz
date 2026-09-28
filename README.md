@@ -6,24 +6,24 @@ A one page vanilla HTML, CSS & JS Portfolio website loaded with features.
 
 - Trilingual Support (English, Portuguese, Spanish)
 - Interactive Skills Conveyor
+- [Mermaid.js](https://mermaid.js.org/) system diagram (lazy-loaded, theme-aware)
+- Easter egg (go hover the Mudkip 👀)
 - Github API Support
 - [Blog](https://blog.tomasmartinez.xyz) Integration (RSS + JSON)
 - [Perfect Lighthouse Score on Desktop](https://pagespeed.web.dev/analysis/https-tomasmartinez-xyz/63ffcozxvr?form_factor=desktop)
 
 ## Todo's
 
-- Code Orgnization
-- Move all `.svg` to `icons.svg`
-- Easter Egg's (Mudkip, Books, a lil gimmick)
-- Pico- 8 Game Support (Have to make Pico8 Game first)
-- Custom API integrations (Have to code backend first)
-- Font Update. Swapped to Satoshi but still not fully sold on it. (it's growing on me!)
-- [Cool inspiration!](https://www.liuyuelin.dev/)
-- My own favicon (Applies for https://blog.tomasmartinez.xyz too)
-- Improve Mobile Performance
+- Pause the pattern pan animation on mobile (animating `background-position` repaints every frame)
 
 ### Done
--  ~~Swap from https://corsproxy.io to personal solution~~
+
+- ~~Code Organization~~
+- ~~Move all `.svg` to `icons.svg`~~
+- ~~Easter Egg's (Mudkip that on hover plays the gif and has a 1 out of 3000 chance to be shiny, add the sound effect too)~~
+- ~~Improve Mobile Performance~~
+
+- ~~Swap from https://corsproxy.io to personal solution~~
 - ~~Fix Project Cards~~
 - ~~Replace Sample Projects with real projects of mine~~
 - ~~Use WEBP on `lightmode.png` & `darkmode.png`~~
@@ -41,4 +41,5 @@ A one page vanilla HTML, CSS & JS Portfolio website loaded with features.
 - https://www.canva.com/
 - https://fonts.google.com/
 - https://corsproxy.io
+- https://mermaid.js.org/
 - [Repeating Image Pattern](https://www.youtube.com/watch?v=x872keruUWQ)

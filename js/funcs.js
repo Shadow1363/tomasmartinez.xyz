@@ -240,7 +240,6 @@ async function addNonGithubProjects() {
       project?.stars || null,
       project?.forks || null,
     );
-    console.log(projectCard);
     projectsContainer.appendChild(projectCard);
   }
 }
@@ -266,8 +265,10 @@ async function createProjectCard(
   image.className = "project-cover";
   image.src = iconClass;
   image.alt = `${name} Image`;
-  image.addEventListener("load", scheduleAdjustProjectsGridHeight); // ← add
-  image.addEventListener("error", scheduleAdjustProjectsGridHeight); // ← add
+  image.loading = "lazy";
+  image.decoding = "async";
+  image.addEventListener("load", scheduleAdjustProjectsGridHeight);
+  image.addEventListener("error", scheduleAdjustProjectsGridHeight);
   imageDiv.appendChild(image);
 
   // Project content
@@ -383,7 +384,6 @@ function getUserLanguageFromBrowser() {
     currentLanguage = "en";
   }
 
-  console.log(`Language set to: ${currentLanguage}`);
   return currentLanguage;
 }
 
@@ -397,27 +397,23 @@ async function loadLanguageSettings() {
 
     languageSettings = await response.json();
 
-    // Set default language
-    currentLanguage = languageSettings.defaultLanguage || "en";
-    updateLanguage(currentLanguage);
+    // Browser language wins, settings.json default is the fallback
+    const detected = getUserLanguageFromBrowser();
+    updateLanguage(
+      languageSettings.languages?.[detected]
+        ? detected
+        : languageSettings.defaultLanguage || "en",
+    );
 
     // Set up language selector buttons
-    // biome-ignore lint/complexity/noForEach: Have to test if I can swap, last time didn't work
-    document.querySelectorAll(".lang-selector button").forEach((btn) => {
+    for (const btn of document.querySelectorAll(".lang-selector button")) {
       btn.addEventListener("click", () => {
         const lang = btn.getAttribute("data-lang");
         if (lang) {
           updateLanguage(lang);
-
-          // Update active button
-          // biome-ignore lint/complexity/noForEach: Have to test if I can swap, last time didn't work
-          document.querySelectorAll(".lang-selector button").forEach((b) => {
-            b.classList.remove("active-lang");
-          });
-          btn.classList.add("active-lang");
         }
       });
-    });
+    }
   } catch (error) {
     console.error("Error loading language settings:", error);
   }
@@ -433,17 +429,21 @@ function updateLanguage(lang) {
   }
 
   const langData = languageSettings.languages[lang].content;
+  document.documentElement.lang = lang;
+
+  for (const btn of document.querySelectorAll(".lang-selector button")) {
+    btn.classList.toggle("active-lang", btn.getAttribute("data-lang") === lang);
+  }
 
   // Update all elements with data-i18n attribute
-  // biome-ignore lint/complexity/noForEach: Have to check if I can swap
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
+  for (const el of document.querySelectorAll("[data-i18n]")) {
     const key = el.getAttribute("data-i18n");
     const text = getNestedProperty(langData, key);
 
     if (text !== undefined) {
       el.textContent = text;
     }
-  });
+  }
 }
 
 // Helper function to get nested properties from an object using dot notation
@@ -501,8 +501,6 @@ function fetchJSONFeed() {
           // Add card to container
           blogPostsContainer.innerHTML += cardHTML;
         }
-
-        console.log("Blog posts displayed successfully");
       } catch (error) {
         console.error("Error in displayBlogPosts:", error);
         if (blogPostsContainer) {
@@ -563,4 +561,90 @@ async function fetchVSCodeStats(extensionId) {
     console.error("Error fetching VS Code stats:", error);
     return 0;
   }
+}
+
+// Mermaid is ~1MB, so it's only downloaded once the diagram is close to the viewport
+let mermaidPromise;
+function renderSystemDiagram() {
+  const el = document.getElementById("system-diagram");
+  if (!el) return;
+  el.dataset.source ??= el.textContent;
+  mermaidPromise ??= import(MERMAID_URL).then((m) => m.default);
+
+  mermaidPromise
+    .then(async (mermaid) => {
+      const css = getComputedStyle(document.body);
+      const v = (name) => css.getPropertyValue(name).trim();
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: "base",
+        themeVariables: {
+          background: v("--bg-color"),
+          primaryColor: v("--card-bg"),
+          primaryTextColor: v("--text-color"),
+          primaryBorderColor: v("--accent-color"),
+          lineColor: v("--accent-color"),
+          fontFamily: "Satoshi, sans-serif",
+        },
+      });
+      const { svg } = await mermaid.render(
+        "system-diagram-svg",
+        el.dataset.source,
+      );
+      el.innerHTML = svg;
+      el.dataset.rendered = "true";
+    })
+    .catch((error) => {
+      console.error("Error rendering system diagram:", error);
+      el.closest("figure")?.remove();
+    });
+}
+
+// Theme colors are baked into the SVG, so redraw it when the theme flips
+function rerenderSystemDiagram() {
+  if (document.getElementById("system-diagram")?.dataset.rendered) {
+    renderSystemDiagram();
+  }
+}
+
+function observeSystemDiagram() {
+  const el = document.getElementById("system-diagram");
+  if (!el) return;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        observer.disconnect();
+        renderSystemDiagram();
+      }
+    },
+    { rootMargin: "400px" },
+  );
+  observer.observe(el);
+}
+
+// Easter egg: hover (or tap) Mudkip. 1 in SHINY_ODDS visits get a shiny one
+function setupMudkip() {
+  const mudkip = document.getElementById("mudkip");
+  if (!mudkip) return;
+
+  const shiny = Math.floor(Math.random() * SHINY_ODDS) === 0;
+  const sprite = `assets/${shiny ? "shiny-" : ""}mudkip`;
+  if (shiny) {
+    mudkip.src = `${sprite}.png`;
+    mudkip.alt = "Shiny Mudkip";
+    mudkip.classList.add("shiny");
+    console.log("✨ A wild shiny Mudkip appeared!");
+  }
+
+  const play = () => {
+    mudkip.src = `${sprite}.gif`;
+  };
+
+  mudkip.addEventListener("pointerenter", (e) => {
+    if (e.pointerType === "mouse") play();
+  });
+  mudkip.addEventListener("pointerleave", (e) => {
+    if (e.pointerType === "mouse") mudkip.src = `${sprite}.png`;
+  });
+  mudkip.addEventListener("click", play);
 }

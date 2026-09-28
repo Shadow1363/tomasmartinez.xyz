@@ -31,16 +31,19 @@
    ============================================================================= */
 @font-face {
   font-family: "Mochiy Pop One";
-  src: url("../assets/fonts/MochiyPopOne-Regular.ttf") format("truetype");
+  /* Subset to only the subtitle's glyphs (full font was 4.8MB) */
+  src: url("assets/fonts/MochiyPopOne-Subset.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Satoshi";
-  src: url("../assets/fonts/Satoshi-Variable.ttf") format("truetype");
+  src: url("assets/fonts/Satoshi-Variable.woff2") format("woff2");
   font-weight: 100 900; /* variable font weights */
   font-style: normal;
+  font-display: swap;
 }
 
 /* =============================================================================
@@ -113,6 +116,10 @@ nav {
   filter: var(--logo-filter);
 }
 
+.logo img {
+  display: block;
+}
+
 .nav-links {
   display: flex;
   gap: 30px;
@@ -151,6 +158,11 @@ nav {
   gap: 10px;
 }
 
+.lang-selector button {
+  display: grid;
+  align-content: center;
+}
+
 .active-lang {
   opacity: 1;
   font-weight: 500;
@@ -181,6 +193,10 @@ nav {
   margin-bottom: 40px;
   color: var(--text-color);
   opacity: 0.8;
+}
+
+#subtitle {
+  font-family: "Mochiy Pop One", sans-serif;
 }
 
 /* =============================================================================
@@ -238,6 +254,37 @@ section {
   margin-bottom: 20px;
   font-size: 18px;
   line-height: 1.6;
+}
+
+.system-diagram {
+  margin: 60px auto 80px;
+  text-align: center;
+}
+
+.system-diagram pre {
+  min-height: 200px; /* reserve space so the lazy render doesn't shift layout */
+  font-family: inherit;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+.system-diagram pre:not([data-rendered]) {
+  visibility: hidden;
+}
+
+.system-diagram svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.system-diagram figcaption {
+  margin-top: 15px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.endorsements {
+  text-align: center;
 }
 
 /* =============================================================================
@@ -356,6 +403,13 @@ footer {
   text-align: center;
   font-size: 14px;
   opacity: 0.7;
+}
+
+.mudkip {
+  display: block;
+  margin: 0 auto 10px;
+  image-rendering: pixelated;
+  cursor: pointer;
 }
 
 /* =============================================================================
@@ -747,5 +801,12 @@ footer {
 @media (max-width: 480px) {
   .pattern {
     --pan-duration: 10s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pattern,
+  .skills-row {
+    animation: none;
   }
 }
