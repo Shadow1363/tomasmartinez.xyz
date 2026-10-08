@@ -901,6 +901,12 @@ footer {
   .theme-toggle {
     margin: 0;
   }
+
+  /* Inset the contact card with the same 40px gutter the blog cards get */
+  .contact {
+    margin: 40px;
+    padding: 60px 20px;
+  }
 }
 
 @media (max-width: 480px) {
